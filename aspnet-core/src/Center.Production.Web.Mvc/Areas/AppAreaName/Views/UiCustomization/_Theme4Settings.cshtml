@@ -1,0 +1,38 @@
+﻿@model Center.Production.Configuration.Dto.ThemeSettingsDto
+
+<ul class="nav nav-tabs m-tabs-line" role="tablist">
+    <li class="nav-item m-tabs__item">
+        <a href="#Theme4Layout" class="nav-link m-tabs__link active" data-toggle="tab" role="tab">
+            @L("UiCustomization_Layout")
+        </a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div id="Theme4Layout" class="tab-pane active">
+        <input type="hidden" name="Theme" value="theme4" />
+        <form class="LayoutSettingsForm">
+            <div class="form-group m-form__group">
+                <label for="LayoutType">@L("UiCustomization_LayoutType")</label>
+                @Html.DropDownList("LayoutType", new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem {Text = L("UiCustomization_Fluid"), Value = "fluid"},
+                    new SelectListItem {Text = L("UiCustomization_Boxed"), Value = "boxed"}
+                }, "Value", "Text", Model.Layout.LayoutType), new {@class = "form-control", id = "LayoutType"})
+            </div>
+            <div class="form-group m-form__group">
+                <label class="m-checkbox col-lg-12">
+                    <input type="checkbox" name="FixedBody" value="true" @(Model.Layout.FixedBody ? "checked=\"checked\"" : "")>
+                    @L("UiCustomization_LayoutFixedContent")
+                    <span></span>
+                </label>
+            </div>
+            <div class="form-group m-form__group">
+                <label class="m-checkbox col-lg-12">
+                    <input type="checkbox" name="MobileFixedBody" value="true" @(Model.Layout.MobileFixedBody ? "checked=\"checked\"" : "")>
+                    @L("UiCustomization_LayoutMobileFixedContent")
+                    <span></span>
+                </label>
+            </div>
+        </form>
+    </div>
+</div>

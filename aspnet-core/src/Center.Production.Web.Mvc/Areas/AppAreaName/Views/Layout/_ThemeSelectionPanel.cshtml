@@ -1,0 +1,95 @@
+﻿@using Abp.Extensions
+@using Center.Production
+@using Center.Production.Configuration
+@{
+    var activeTheme = await SettingManager.GetSettingValueAsync(AppSettings.UiManagement.Theme);
+}
+
+<!-- begin::Quick Sidebar -->
+<div id="m_theme_selection_panel" class="m-quick-sidebar m-quick-sidebar--tabbed m-quick-sidebar--skin-light">
+    <div class="m-theme-selection-panel__content m--hide">
+        <div class="select-theme-header">
+            <h5>@L("SelectATheme")</h5>
+            <span id="m_theme_selection_panel_close" class="m-theme-selection-panel__close">
+                <i class="la la-close"></i>
+            </span>
+        </div>
+        <div class="m-scrollable">
+            <ul class="nav nav-tabs m-tabs-line m-tabs-line--2x m-tabs-line--primary" role="tablist">
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="default" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.ThemeDefault ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/default.png" width="250" />
+                        <span class="theme-name">@L(AppConsts.ThemeDefault.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme2" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme2 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme2.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme2.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme3" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme3 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme3.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme3.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme4" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme4 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme4.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme4.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme5" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme5 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme5.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme5.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme6" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme6 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme6.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme6.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme7" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme7 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme7.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme7.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme8" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme8 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme8.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme8.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme9" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme9 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme9.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme9.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme10" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme10 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme10.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme10.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme11" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme11 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme11.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme11.ToPascalCase())</span>
+                    </a>
+                </li>
+                <li class="nav-item m-tabs__item">
+                    <a href="#" data-theme="theme12" class="nav-link m-tabs__link text-center @(activeTheme == AppConsts.Theme12 ? "active" : "") theme-selection-link" data-toggle="tab" role="tab">
+                        <img src="@(ApplicationPath)Common/Images/metronic-themes/theme12.png" width="250" />
+                        <span class="theme-name">@L("Theme_" + AppConsts.Theme12.ToPascalCase())</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- end::Quick Sidebar -->

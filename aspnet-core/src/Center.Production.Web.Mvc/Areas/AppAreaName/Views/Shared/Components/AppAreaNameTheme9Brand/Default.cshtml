@@ -1,0 +1,64 @@
+﻿@using Center.Production.Web.Areas.AppAreaName.Models.Layout
+@using Center.Production.Web.Areas.AppAreaName.Views.Shared.Components.AppAreaNameLogo
+@model HeaderViewModel
+@{
+    Layout = null;
+    var theme = await GetTheme();
+}
+
+<div class="m-stack__item m-brand m-brand--mobile">
+    <div class="m-stack m-stack--ver m-stack--general">
+        <div class="m-stack__item m-stack__item--middle m-brand__logo">
+            <a href="@Url.Action("Index", "Home", new {area = string.Empty})" target="_blank" class="m-brand__logo-wrapper">
+                @if (AbpSession.TenantId == null || Model.LoginInformations?.Tenant?.LogoId == null)
+                {
+                    <img alt="logo" src="/Common/Images/app-logo-on-light.svg" height="38" />
+                }
+                else
+                {
+                    @await Component.InvokeAsync(typeof(AppAreaNameLogoViewComponent))
+                }
+            </a>
+        </div>
+        <div class="m-stack__item m-stack__item--middle m-brand__tools">
+            <!-- BEGIN: Responsive Aside Left Menu Toggler -->
+            <a href="javascript:;" id="m_aside_left_toggle_mobile" class="m-brand__icon m-brand__toggler m-brand__toggler--left">
+                <span></span>
+            </a>
+            <!-- END -->
+            <!-- BEGIN: Topbar Toggler -->
+            <a id="m_aside_header_topbar_mobile_toggle" href="javascript:;" class="m-brand__icon">
+                <i class="flaticon-more" aria-label="@L("Toggle")"></i>
+            </a>
+            <!-- BEGIN: Topbar Toggler -->
+        </div>
+    </div>
+</div>
+<!-- END: Brand -->
+
+<div class="m-stack__item m-stack__item--middle m-stack__item--left m-header-head" id="m_header_nav">
+    <div class="m-stack m-stack--ver m-stack--desktop">
+        <div class="m-stack__item m-stack__item--middle m-stack__item--fit">
+            <!-- BEGIN: Aside Left Toggle -->
+            <a href="javascript:;" id="m_aside_left_toggle" class="m-aside-left-toggler m-aside-left-toggler--left m_aside_left_toggler">
+                <span></span>
+            </a>
+            <!-- END: Aside Left Toggle -->
+        </div>
+    </div>
+</div>
+
+<div class="m-stack__item m-stack__item--middle m-stack__item--center">
+    <!-- BEGIN: Brand -->
+    <a href="@Url.Action("Index", "Home", new {area = string.Empty})" target="_blank" class="m-brand m-brand--desktop">
+        @if (AbpSession.TenantId == null || Model.LoginInformations?.Tenant?.LogoId == null)
+        {
+            <img alt="logo" src="/Common/Images/app-logo-on-light.svg" height="38" />
+        }
+        else
+        {
+            @await Component.InvokeAsync(typeof(AppAreaNameLogoViewComponent))
+        }
+    </a>
+    <!-- END: Brand -->
+</div>
