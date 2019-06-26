@@ -31,6 +31,8 @@ namespace Center.Production.Authorization
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
             pages.CreateChildPermission(AppPermissions.Pages_DemoUiComponents, L("DemoUiComponents"));
 
+            var danhmucTest = pages.CreateChildPermission(AppPermissions.Pages_DanhMuc, L("PagesDanhMuc"));
+
             var administration = pages.CreateChildPermission(AppPermissions.Pages_Administration, L("Administration"));
 
             var roles = administration.CreateChildPermission(AppPermissions.Pages_Administration_Roles, L("Roles"));

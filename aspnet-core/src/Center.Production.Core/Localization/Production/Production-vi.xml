@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="vi">
   <texts>
+    <text name="PagesDanhMuc">Trang danh muc</text>
     <text name="HomePage">Trang chủ</text>
     <text name="AboutUs">Về chúng tôi</text>
     <text name="Administration">Quản trị</text>

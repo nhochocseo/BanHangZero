@@ -69,7 +69,7 @@
         public const string Pages_Administration_Host_Settings = "Pages.Administration.Host.Settings";
         public const string Pages_Administration_Host_Dashboard = "Pages.Administration.Host.Dashboard";
 
-        public const string Pages_DanhMuc = "Pages.Pages_DanhMuc";
+        public const string Pages_DanhMuc = "Pages.DanhMuc";
 
     }
 }

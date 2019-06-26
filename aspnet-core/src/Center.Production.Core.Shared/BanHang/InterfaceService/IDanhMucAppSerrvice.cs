@@ -9,6 +9,7 @@ namespace Center.Production.BanHang.Interface
 {
     public interface IDanhMucAppSerrvice: IApplicationService
     {
-       int Save(DanhMuc input);
+      int Save(Dto.DanhMucDto data);
+      List<Dto.DanhMucDto> GetList();
     }
 }

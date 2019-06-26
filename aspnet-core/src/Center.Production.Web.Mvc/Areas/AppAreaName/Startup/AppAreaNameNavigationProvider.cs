@@ -125,6 +125,13 @@ namespace Center.Production.Web.Areas.AppAreaName.Startup
                         icon: "flaticon-shapes",
                         permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_DemoUiComponents)
                     )
+                ).AddItem(new MenuItemDefinition(
+                        AppAreaNamePageNames.BanHang.DanhMuc,
+                        L("DanhMuc"),
+                        url: "AppAreaName/DanhMuc",
+                        icon: "flaticon-shapes",
+                        permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_DanhMuc)
+                    )
                 );
         }
 
