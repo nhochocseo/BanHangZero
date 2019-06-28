@@ -17,9 +17,9 @@ namespace Center.Production.BanHang.Service
         {
             _danhMucRepository = danhMucRepository;
         }
-        public int Save(Dto.DanhMucDto data)
+        public int Save(DanhMucDto data)
         {
-            if(data.Id != null)
+            if(data.Id == null)
             {
                 _danhMucRepository.InsertAsync(Mapper.Map<DanhMuc.DanhMuc>(data));
                 return 0;
@@ -27,7 +27,7 @@ namespace Center.Production.BanHang.Service
             _danhMucRepository.UpdateAsync(Mapper.Map<DanhMuc.DanhMuc>(data));
             return 1;
         }
-        public List<Dto.DanhMucDto> GetList()
+        public List<DanhMucDto> GetList()
         {
             var data = Mapper.Map<List<DanhMucDto>>(_danhMucRepository.GetAll().ToList());
             return data;
