@@ -7,12 +7,12 @@ import { ApiPublicService } from '../api-public.service';
   providedIn: 'root'
 })
 export class DanhMucService {
-    private saveDanhMucCode = '002';
+    private saveDanhMucCode = '/DanhMuc/GetList';
   constructor(
     private apiPublic: ApiPublicService
     ) {}
 
-    saveDanhMuc(): Observable<any> {
+    getListDanhMuc(): Observable<any> {
     return this.apiPublic.getValuePublic(this.saveDanhMucCode, {});
   }
 }
