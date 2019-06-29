@@ -76,7 +76,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CountoModule } from 'angular2-counto';
 import { TextMaskModule } from 'angular2-text-mask';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bootstrap-datepicker-config.service';
+import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bootstrap-datepicker-config.service';;
+import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component'
 
 @NgModule({
     imports: [
@@ -167,7 +168,8 @@ import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bo
         Theme10ThemeUiSettingsComponent,
         Theme12ThemeUiSettingsComponent,
         Theme11ThemeUiSettingsComponent
-    ],
+,
+        DanhMucComponent    ],
     exports: [
         AddMemberModalComponent,
         AddRoleModalComponent

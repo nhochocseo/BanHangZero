@@ -17,6 +17,7 @@ import { SubscriptionManagementComponent } from './subscription-management/subsc
 import { TenantsComponent } from './tenants/tenants.component';
 import { UiCustomizationComponent } from './ui-customization/ui-customization.component';
 import { UsersComponent } from './users/users.component';
+import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component';
 
 @NgModule({
     imports: [
@@ -24,6 +25,10 @@ import { UsersComponent } from './users/users.component';
             {
                 path: '',
                 children: [
+                    {
+                        path: 'ban-hang/danh-muc', component: DanhMucComponent, data: { permission: 'Pages.DanhMuc' }
+                    },
+                    // mặc định
                     { path: 'users', component: UsersComponent, data: { permission: 'Pages.Administration.Users' } },
                     { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Administration.Roles' } },
                     { path: 'auditLogs', component: AuditLogsComponent, data: { permission: 'Pages.Administration.AuditLogs' } },

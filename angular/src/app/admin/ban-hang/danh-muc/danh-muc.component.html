@@ -1,0 +1,26 @@
+<div [@routerTransition]>
+    <div class="m-subheader">
+        <div class="row align-items-center">
+            <div class="mr-auto col-auto">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>{{"PagesDanhMuc" | localize}}</span>
+                </h3>
+                <span class="m-section__sub">
+                    {{"PagesDanhMuc" | localize}}
+                </span>
+            </div>
+            <div class="col text-right mt-3 mt-md-0">
+                <button *ngIf="'Pages.Editions.Create' | permission" class="btn btn-primary"><i class="fa fa-plus"></i> {{"CreateNewEdition" | localize}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <div class="row align-items-center">
+                    <permission-tree #permissionTree></permission-tree>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
