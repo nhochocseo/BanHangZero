@@ -19,6 +19,7 @@ import { TreeDataHelperService } from './tree-data-helper.service';
 import { LocalizePipe } from '@shared/common/pipes/localize.pipe';
 import { PermissionPipe } from '@shared/common/pipes/permission.pipe';
 import { FeatureCheckerPipe } from '@shared/common/pipes/feature-checker.pipe';
+import { ArrayToTreeConverterDanhMucService } from './ban-hang/array-to-tree-convert-danhmuc.service';
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import { FeatureCheckerPipe } from '@shared/common/pipes/feature-checker.pipe';
         ScriptLoaderService,
         StyleLoaderService,
         ArrayToTreeConverterService,
+        ArrayToTreeConverterDanhMucService,
         TreeDataHelperService
     ],
     declarations: [

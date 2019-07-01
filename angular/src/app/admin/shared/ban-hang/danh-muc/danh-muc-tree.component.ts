@@ -1,26 +1,26 @@
-﻿import { Component, Injector } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { PermissionTreeEditModel } from '@app/admin/shared/permission-tree-edit.model';
 import { AppComponentBase } from '@shared/common/app-component-base';
-import { ArrayToTreeConverterService } from '@shared/utils/array-to-tree-converter.service';
 import { TreeDataHelperService } from '@shared/utils/tree-data-helper.service';
 import { FlatPermissionDto } from '@shared/service-proxies/service-proxies';
 import { TreeNode } from 'primeng/api';
 import * as _ from 'lodash';
+import { ArrayToTreeConverterDanhMucService } from '@shared/utils/ban-hang/array-to-tree-convert-danhmuc.service';
 
 @Component({
-    selector: 'permission-tree',
+    selector: 'danhmuc-tree',
     template:
         `<div class='form-group'>
             <input type='text' (input)="filterPermissions($event)" [(ngModel)]="filter" class='form-control' placeholder='{{"SearchWithThreeDot" | localize}}' >
         </div>
         <p-tree [value]="treeData" [(selection)]="selectedPermissions" selectionMode="checkbox" (onNodeSelect)="nodeSelect($event)" [propagateSelectionUp]="false"></p-tree>`
 })
-export class PermissionTreeComponent extends AppComponentBase {
+export class DanhmucTreeComponent extends AppComponentBase {
 
-    set editData(val: PermissionTreeEditModel) {
+    set editData(val: any) {
         console.log(val);
-        this.setTreeData(val.permissions);
-        this.setSelectedNodes(val.grantedPermissionNames);
+        this.setTreeData(val.result);
+        this.setSelectedNodes(val);
     }
 
     treeData: any;
@@ -28,15 +28,16 @@ export class PermissionTreeComponent extends AppComponentBase {
     filter = '';
 
     constructor(
-        private _arrayToTreeConverterService: ArrayToTreeConverterService,
+        private _arrayToTreeConverterDanhMucService: ArrayToTreeConverterDanhMucService,
         private _treeDataHelperService: TreeDataHelperService,
         injector: Injector
     ) {
         super(injector);
     }
 
-    setTreeData(permissions: FlatPermissionDto[]) {
-        this.treeData = this._arrayToTreeConverterService.createTree(permissions, 'parentName', 'name', null, 'children',
+    setTreeData(permissions: any) {
+        console.log(permissions);
+        this.treeData = this._arrayToTreeConverterDanhMucService.createTree(permissions, 'parentId', 'name', null, 'children',
             [{
                 target: 'label',
                 source: 'displayName'

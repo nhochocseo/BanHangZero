@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ApiPublicService } from '../api-public.service';
+import { ApiCallService } from '../api-call.service';
+import { PortalConfig } from '@app/constants/config/app.config';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DanhMucService {
-    private saveDanhMucCode = '/DanhMuc/GetList';
+  private getDanhMucUrl = PortalConfig.GATEWAY_API + '/DanhMuc/GetList';
   constructor(
-    private apiPublic: ApiPublicService
+    private apiPublic: ApiCallService
     ) {}
-
     getListDanhMuc(): Observable<any> {
-    return this.apiPublic.getValuePublic(this.saveDanhMucCode, {});
-  }
+      return this.apiPublic.getValue(this.getDanhMucUrl, {});
+    }
 }
