@@ -37,7 +37,7 @@ export class DanhmucTreeComponent extends AppComponentBase {
 
     setTreeData(permissions: any) {
         console.log(permissions);
-        this.treeData = this._arrayToTreeConverterDanhMucService.createTree(permissions, 'parentId', 'name', null, 'children',
+        this.treeData = this._arrayToTreeConverterDanhMucService.createTree(permissions, 'id', 'parentId', null, 'children',
             [{
                 target: 'label',
                 source: 'displayName'

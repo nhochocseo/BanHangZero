@@ -40,6 +40,7 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.UiCustomizationSettingsServiceProxy,
         ApiServiceProxies.PayPalPaymentServiceProxy,
         ApiServiceProxies.StripePaymentServiceProxy,
+        ApiServiceProxies.DanhMucServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

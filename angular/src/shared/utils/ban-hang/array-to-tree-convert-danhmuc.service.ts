@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Injectable()
 export class ArrayToTreeConverterDanhMucService {
 
     createTree(array: any[], parentIdProperty, idProperty, parentIdValue, childrenProperty: string, fieldMappings): any {
+        console.log(array);
         let tree = [];
-
+        console.log(parentIdProperty);
+        console.log(parentIdValue);
         let nodes = _.filter(array, [parentIdProperty, parentIdValue]);
-
+        console.log(nodes);
         _.forEach(nodes, node => {
             let newNode = {
                 data: node
@@ -27,7 +30,7 @@ export class ArrayToTreeConverterDanhMucService {
 
             tree.push(newNode);
         });
-
+console.log(tree);
         return tree;
     }
 

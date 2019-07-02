@@ -73,6 +73,7 @@ export class UsersComponent extends AppComponentBase {
             this.primengTableHelper.records = result.items;
             this.primengTableHelper.hideLoadingIndicator();
         });
+        console.log(this.primengTableHelper);
     }
 
     unlockUser(record): void {
