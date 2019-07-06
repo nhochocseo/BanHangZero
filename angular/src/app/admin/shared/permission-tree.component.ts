@@ -18,7 +18,6 @@ import * as _ from 'lodash';
 export class PermissionTreeComponent extends AppComponentBase {
 
     set editData(val: PermissionTreeEditModel) {
-        console.log(val);
         this.setTreeData(val.permissions);
         this.setSelectedNodes(val.grantedPermissionNames);
     }

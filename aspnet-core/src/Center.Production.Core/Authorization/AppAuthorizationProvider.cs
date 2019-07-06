@@ -31,8 +31,6 @@ namespace Center.Production.Authorization
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
             pages.CreateChildPermission(AppPermissions.Pages_DemoUiComponents, L("DemoUiComponents"));
 
-            var danhmucTest = pages.CreateChildPermission(AppPermissions.Pages_DanhMuc, L("PagesDanhMuc"));
-
             var administration = pages.CreateChildPermission(AppPermissions.Pages_Administration, L("Administration"));
 
             var roles = administration.CreateChildPermission(AppPermissions.Pages_Administration_Roles, L("Roles"));
@@ -88,6 +86,10 @@ namespace Center.Production.Authorization
             administration.CreateChildPermission(AppPermissions.Pages_Administration_Host_Maintenance, L("Maintenance"), multiTenancySides: _isMultiTenancyEnabled ? MultiTenancySides.Host : MultiTenancySides.Tenant);
             administration.CreateChildPermission(AppPermissions.Pages_Administration_HangfireDashboard, L("HangfireDashboard"), multiTenancySides: _isMultiTenancyEnabled ? MultiTenancySides.Host : MultiTenancySides.Tenant);
             administration.CreateChildPermission(AppPermissions.Pages_Administration_Host_Dashboard, L("Dashboard"), multiTenancySides: MultiTenancySides.Host);
+
+            //Danh muc
+            var danhmucs = pages.CreateChildPermission(AppPermissions.Pages_DanhMuc, L("DanhMucs"), multiTenancySides: MultiTenancySides.Host);
+
         }
 
         private static ILocalizableString L(string name)

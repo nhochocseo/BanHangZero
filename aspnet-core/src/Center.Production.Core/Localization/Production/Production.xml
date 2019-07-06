@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
   <texts>
-    <text name="PagesDanhMuc">Page danh muc</text>
+    <text name="DanhMucs">Category</text>
     <text name="HomePage">Home page</text>
     <text name="AboutUs">About us</text>
     <text name="Administration">Administration</text>

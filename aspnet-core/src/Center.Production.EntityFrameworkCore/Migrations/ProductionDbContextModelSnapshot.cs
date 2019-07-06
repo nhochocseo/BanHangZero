@@ -1084,6 +1084,8 @@ namespace Center.Production.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("Created");
+
                     b.Property<string>("Name")
                         .HasMaxLength(100);
 

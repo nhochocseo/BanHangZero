@@ -57,10 +57,7 @@
                                     </span>
                                     <span class="m-widget24__stats m--font-brand">
                                         <span *ngIf="!hostDashboardData">...</span>
-                                        <span *ngIf="hostDashboardData" counto [step]="30" [countTo]="hostDashboardData.newSubscriptionAmount" [countFrom]="0" [duration]="5" (countoChange)="countoNewSubscriptionAmount = $event">
-                                            <!-- {{countoNewSubscriptionAmount | currency:'USD':'symbol':'1.0-0'}} -->
-                                            {{countoNewSubscriptionAmount}}
-                                        </span>
+                                        <span *ngIf="hostDashboardData" counto [step]="30" [countTo]="hostDashboardData.newSubscriptionAmount" [countFrom]="0" [duration]="5" (countoChange)="countoNewSubscriptionAmount = $event">{{countoNewSubscriptionAmount | currency:'USD':'symbol':'1.0-0'}}</span>
                                     </span>
                                     <div class="m--space-10"></div>
                                     <div class="progress m-progress--sm">
@@ -88,10 +85,7 @@
                                     </span>
                                     <span class="m-widget24__stats m--font-info">
                                         <span *ngIf="!hostDashboardData">...</span>
-                                        <span *ngIf="hostDashboardData" counto [step]="10" [countTo]="hostDashboardData.newTenantsCount" [countFrom]="0" [duration]="5" (countoChange)="countoNewTenantsCount = $event">
-                                            <!-- {{countoNewTenantsCount | number:'1.0-0' }} -->
-                                            {{countoNewTenantsCount }}
-                                        </span>
+                                        <span *ngIf="hostDashboardData" counto [step]="10" [countTo]="hostDashboardData.newTenantsCount" [countFrom]="0" [duration]="5" (countoChange)="countoNewTenantsCount = $event">{{countoNewTenantsCount | number:'1.0-0' }}</span>
                                     </span>
                                     <div class="m--space-10"></div>
                                     <div class="progress m-progress--sm">
@@ -117,10 +111,7 @@
                                     </span>
                                     <span class="m-widget24__stats m--font-danger">
                                         <span *ngIf="!hostDashboardData">...</span>
-                                        <span *ngIf="hostDashboardData" counto [step]="100" [countTo]="hostDashboardData.dashboardPlaceholder1" [countFrom]="0" [duration]="5" (countoChange)="countoDashboardPlaceholder1 = $event">
-                                            <!-- {{countoDashboardPlaceholder1 | number:'1.0-0' }} -->
-                                            {{countoDashboardPlaceholder1 }}
-                                        </span>
+                                        <span *ngIf="hostDashboardData" counto [step]="100" [countTo]="hostDashboardData.dashboardPlaceholder1" [countFrom]="0" [duration]="5" (countoChange)="countoDashboardPlaceholder1 = $event">{{countoDashboardPlaceholder1 | number:'1.0-0' }}</span>
                                     </span>
                                     <div class="m--space-10"></div>
                                     <div class="progress m-progress--sm">
@@ -147,10 +138,7 @@
                                     </span>
                                     <span class="m-widget24__stats m--font-success">
                                         <span *ngIf="!hostDashboardData">...</span>
-                                        <span *ngIf="hostDashboardData" counto [step]="100" [countTo]="hostDashboardData.dashboardPlaceholder2" [countFrom]="0" [duration]="5" (countoChange)="countoDashboardPlaceholder2 = $event">
-                                            <!-- {{countoDashboardPlaceholder2 | number:'1.0-0' }} -->
-                                            {{countoDashboardPlaceholder2 }}
-                                        </span>
+                                        <span *ngIf="hostDashboardData" counto [step]="100" [countTo]="hostDashboardData.dashboardPlaceholder2" [countFrom]="0" [duration]="5" (countoChange)="countoDashboardPlaceholder2 = $event">{{countoDashboardPlaceholder2 | number:'1.0-0' }}</span>
                                     </span>
                                     <div class="m--space-10"></div>
                                     <div class="progress m-progress--sm">

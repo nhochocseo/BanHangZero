@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Center.Production.Migrations
 {
     [DbContext(typeof(ProductionDbContext))]
-    [Migration("20190625082321_Danh Muc")]
+    [Migration("20190705035723_Danh Muc")]
     partial class DanhMuc
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1086,11 +1086,15 @@ namespace Center.Production.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<DateTime>("Created");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(100);
 
                     b.Property<int>("ParentId");
 
-                    b.Property<string>("Url");
+                    b.Property<string>("Url")
+                        .HasMaxLength(500);
 
                     b.HasKey("Id");
 

@@ -40,9 +40,6 @@
     "js-cookie": "^2.2.0",
     "localforage": "^1.7.3",
     "lodash": "^4.17.11",
-    "ngx-loading": "^1.0.14",
-    "ngx-toastr": "^8.4.0",
-    "@ngx-loading-bar/core": "^2.1.0",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.23",
     "ng-recaptcha": "^4.2.1",
@@ -82,10 +79,10 @@
     "karma-coverage-istanbul-reporter": "^2.0.5",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
-    "nswag": "^12.0.20",
+    "nswag": "12.0.20",
     "protractor": "~5.4.2",
     "ts-node": "~8.0.3",
-    "tslint": "~5.15.0",
-    "typescript": "3.2.4"
+    "typescript": "3.2.4",
+    "tslint": "~5.15.0"
   }
 }

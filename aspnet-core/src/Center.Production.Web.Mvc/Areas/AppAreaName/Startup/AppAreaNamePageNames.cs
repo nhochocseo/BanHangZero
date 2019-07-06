@@ -29,9 +29,5 @@
             public const string Settings = "Administration.Settings.Tenant";
             public const string SubscriptionManagement = "Administration.SubscriptionManagement.Tenant";
         }
-        public static class BanHang
-        {
-            public const string DanhMuc = "Pages.DanhMuc";
-        }
     }
 }

@@ -31,6 +31,7 @@ export class AppUrlService {
         if (baseUrl.indexOf(AppConsts.appBaseHref) < 0) {
             baseUrl = baseUrl + this.removeFromStart(AppConsts.appBaseHref, '/');
         }
+
         if (baseUrl.indexOf(AppUrlService.tenancyNamePlaceHolder) < 0) {
             return baseUrl;
         }
@@ -45,6 +46,7 @@ export class AppUrlService {
         if (!tenancyName) {
             return baseUrl.replace(AppUrlService.tenancyNamePlaceHolder, '');
         }
+
         return baseUrl.replace(AppUrlService.tenancyNamePlaceHolder, tenancyName);
     }
 

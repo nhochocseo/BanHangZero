@@ -2,7 +2,7 @@
 import * as ngCommon from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { ChatSignalrService } from '@app/shared/layout/chat/chat-signalr.service';
 import { LinkAccountModalComponent } from '@app/shared/layout/link-account-modal.component';
 import { LinkedAccountsModalComponent } from '@app/shared/layout/linked-accounts-modal.component';
@@ -61,7 +61,7 @@ import { NotificationsComponent } from './shared/layout/notifications/notificati
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { TextMaskModule } from 'angular2-text-mask';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { ServerInterceptorService } from './services/server-interceptor.service';
+
 // Metronic
 import { PerfectScrollbarModule, PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -74,9 +74,6 @@ import { LayoutConfigService } from '@metronic/app/core/services/layout-config.s
 import { UtilsService } from '@metronic/app/core/services/utils.service';
 import { LayoutRefService } from '@metronic/app/core/services/layout/layout-ref.service';
 
-// export const httpInterceptorProviders = [
-//     { provide: HTTP_INTERCEPTORS, useClass: ServerInterceptorService, multi: true },
-//   ];
 @NgModule({
     declarations: [
         AppComponent,
@@ -150,7 +147,6 @@ import { LayoutRefService } from '@metronic/app/core/services/layout/layout-ref.
         ImageCropperModule
     ],
     providers: [
-        // httpInterceptorProviders,
         ImpersonationService,
         LinkedAccountService,
         UserNotificationHelper,
@@ -161,7 +157,7 @@ import { LayoutRefService } from '@metronic/app/core/services/layout/layout-ref.
         },
         LayoutConfigService,
         UtilsService,
-        LayoutRefService,
+        LayoutRefService
     ]
 })
 export class AppModule { }

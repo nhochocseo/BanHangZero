@@ -1602,66 +1602,22 @@ export class DanhMucServiceProxy {
     }
 
     /**
-     * @param data (optional) 
+     * @param filter (optional) 
+     * @param sorting (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
      * @return Success
      */
-    save(data: DanhMucDto | null | undefined): Observable<number> {
-        let url_ = this.baseUrl + "/api/services/app/DanhMuc/Save";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(data);
-
-        let options_ : any = {
-            body: content_,
-            observe: "response",
-            responseType: "blob",
-            headers: new HttpHeaders({
-                "Content-Type": "application/json", 
-                "Accept": "application/json"
-            })
-        };
-
-        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processSave(response_);
-        })).pipe(_observableCatch((response_: any) => {
-            if (response_ instanceof HttpResponseBase) {
-                try {
-                    return this.processSave(<any>response_);
-                } catch (e) {
-                    return <Observable<number>><any>_observableThrow(e);
-                }
-            } else
-                return <Observable<number>><any>_observableThrow(response_);
-        }));
-    }
-
-    protected processSave(response: HttpResponseBase): Observable<number> {
-        const status = response.status;
-        const responseBlob = 
-            response instanceof HttpResponse ? response.body : 
-            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
-
-        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
-            return _observableOf(result200);
-            }));
-        } else if (status !== 200 && status !== 204) {
-            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            }));
-        }
-        return _observableOf<number>(<any>null);
-    }
-
-    /**
-     * @return Success
-     */
-    getList(): Observable<DanhMucDto[]> {
-        let url_ = this.baseUrl + "/api/services/app/DanhMuc/GetList";
+    getDanhMuc(filter: string | null | undefined, sorting: string | null | undefined, skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfDanhMucDto> {
+        let url_ = this.baseUrl + "/api/services/app/DanhMuc/GetDanhMuc?";
+        if (filter !== undefined)
+            url_ += "Filter=" + encodeURIComponent("" + filter) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1673,20 +1629,20 @@ export class DanhMucServiceProxy {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetList(response_);
+            return this.processGetDanhMuc(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetList(<any>response_);
+                    return this.processGetDanhMuc(<any>response_);
                 } catch (e) {
-                    return <Observable<DanhMucDto[]>><any>_observableThrow(e);
+                    return <Observable<PagedResultDtoOfDanhMucDto>><any>_observableThrow(e);
                 }
             } else
-                return <Observable<DanhMucDto[]>><any>_observableThrow(response_);
+                return <Observable<PagedResultDtoOfDanhMucDto>><any>_observableThrow(response_);
         }));
     }
 
-    protected processGetList(response: HttpResponseBase): Observable<DanhMucDto[]> {
+    protected processGetDanhMuc(response: HttpResponseBase): Observable<PagedResultDtoOfDanhMucDto> {
         const status = response.status;
         const responseBlob = 
             response instanceof HttpResponse ? response.body : 
@@ -1697,11 +1653,7 @@ export class DanhMucServiceProxy {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            if (resultData200 && resultData200.constructor === Array) {
-                result200 = [] as any;
-                for (let item of resultData200)
-                    result200!.push(DanhMucDto.fromJS(item));
-            }
+            result200 = resultData200 ? PagedResultDtoOfDanhMucDto.fromJS(resultData200) : new PagedResultDtoOfDanhMucDto();
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -1709,7 +1661,7 @@ export class DanhMucServiceProxy {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             }));
         }
-        return _observableOf<DanhMucDto[]>(<any>null);
+        return _observableOf<PagedResultDtoOfDanhMucDto>(<any>null);
     }
 }
 
@@ -11806,10 +11758,59 @@ export interface IGetDefaultEditionNameOutput {
     name: string | undefined;
 }
 
+export class PagedResultDtoOfDanhMucDto implements IPagedResultDtoOfDanhMucDto {
+    totalCount!: number | undefined;
+    items!: DanhMucDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfDanhMucDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [] as any;
+                for (let item of data["items"])
+                    this.items!.push(DanhMucDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfDanhMucDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfDanhMucDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfDanhMucDto {
+    totalCount: number | undefined;
+    items: DanhMucDto[] | undefined;
+}
+
 export class DanhMucDto implements IDanhMucDto {
     name!: string | undefined;
     url!: string | undefined;
     parentId!: number | undefined;
+    created!: moment.Moment | undefined;
     id!: number | undefined;
 
     constructor(data?: IDanhMucDto) {
@@ -11826,6 +11827,7 @@ export class DanhMucDto implements IDanhMucDto {
             this.name = data["name"];
             this.url = data["url"];
             this.parentId = data["parentId"];
+            this.created = data["created"] ? moment(data["created"].toString()) : <any>undefined;
             this.id = data["id"];
         }
     }
@@ -11842,6 +11844,7 @@ export class DanhMucDto implements IDanhMucDto {
         data["name"] = this.name;
         data["url"] = this.url;
         data["parentId"] = this.parentId;
+        data["created"] = this.created ? this.created.toISOString() : <any>undefined;
         data["id"] = this.id;
         return data; 
     }
@@ -11851,6 +11854,7 @@ export interface IDanhMucDto {
     name: string | undefined;
     url: string | undefined;
     parentId: number | undefined;
+    created: moment.Moment | undefined;
     id: number | undefined;
 }
 

@@ -78,7 +78,6 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bootstrap-datepicker-config.service';;
 import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component'
-import { DanhmucTreeComponent } from './shared/ban-hang/danh-muc/danh-muc-tree.component';
 
 @NgModule({
     imports: [
@@ -168,10 +167,9 @@ import { DanhmucTreeComponent } from './shared/ban-hang/danh-muc/danh-muc-tree.c
         Theme9ThemeUiSettingsComponent,
         Theme10ThemeUiSettingsComponent,
         Theme12ThemeUiSettingsComponent,
-        Theme11ThemeUiSettingsComponent,
-        DanhMucComponent,
-        DanhmucTreeComponent
-    ],
+        Theme11ThemeUiSettingsComponent
+,
+        DanhMucComponent    ],
     exports: [
         AddMemberModalComponent,
         AddRoleModalComponent

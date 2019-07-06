@@ -25,10 +25,9 @@ import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component';
             {
                 path: '',
                 children: [
-                    {
-                        path: 'ban-hang/danh-muc', component: DanhMucComponent, data: { permission: 'Pages.DanhMuc' }
-                    },
-                    // mặc định
+                    { path: 'danh-muc', component: DanhMucComponent, data: { permission: 'Pages.DanhMuc' } },
+
+
                     { path: 'users', component: UsersComponent, data: { permission: 'Pages.Administration.Users' } },
                     { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Administration.Roles' } },
                     { path: 'auditLogs', component: AuditLogsComponent, data: { permission: 'Pages.Administration.AuditLogs' } },

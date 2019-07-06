@@ -1,38 +1,48 @@
-﻿using Abp.Authorization;
+﻿
+
+using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.Domain.Repositories;
-using AutoMapper;
+using Abp.Extensions;
+using Abp.Linq.Extensions;
 using Center.Production.Authorization;
-using Center.Production.BanHang.Dto;
-using Center.Production.BanHang.Interface;
+using Center.Production.BanHang.DanhMuc.Dto;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 
 namespace Center.Production.BanHang.DanhMuc
 {
     [AbpAuthorize(AppPermissions.Pages_DanhMuc)]
-    public class DanhMucAppService : ProductionAppServiceBase, IDanhMucAppSerrvice
+    public class DanhMucAppService : ProductionAppServiceBase, IDanhMucAppService
     {
-        private readonly IDanhMuc _danhMuc;
-        private readonly IRepository<DanhMuc> _danhMucIRepository;
+        private readonly IRepository<DanhMuc> _danhMucRepository;
         public DanhMucAppService(
-                IDanhMuc danhMuc,
-                IRepository<DanhMuc> danhMucRepository
+            IRepository<DanhMuc> danhMucRepository
             )
         {
-            _danhMuc = danhMuc;
-            _danhMucIRepository = danhMucRepository;
+            _danhMucRepository = danhMucRepository;
         }
+        public async Task<PagedResultDto<DanhMucDto>> GetDanhMuc(DanhMucInput input)
+        {
+            var query = _danhMucRepository.GetAll().WhereIf(
+                    !string.IsNullOrWhiteSpace(input.Filter),
+                    d => d.Name.Contains(input.Filter) || d.Url.Contains(input.Filter));
 
-        public int Save(Dto.DanhMucDto data)
-        {
-            var result = _danhMuc.Save(data);
-            return result;
-        }
-        public List<Dto.DanhMucDto> GetList()
-        {
-            var data = _danhMuc.GetList();
-            return data;
+            var danhMucCount = await query.CountAsync();
+
+            var danhMuc = await query
+                .OrderBy(input.Sorting ?? "id ASC")
+                .PageBy(input)
+                .ToListAsync();
+
+            var danhMucDtos = ObjectMapper.Map<List<DanhMucDto>>(danhMuc);
+            
+            return new PagedResultDto<DanhMucDto>(
+                danhMucCount,
+                danhMucDtos
+                );
         }
     }
 }

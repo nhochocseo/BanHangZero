@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Center.Production.Migrations
@@ -13,9 +14,10 @@ namespace Center.Production.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Url = table.Column<string>(nullable: true),
-                    ParentId = table.Column<int>(nullable: false)
+                    Name = table.Column<string>(maxLength: 100, nullable: true),
+                    Url = table.Column<string>(maxLength: 500, nullable: true),
+                    ParentId = table.Column<int>(nullable: false),
+                    Created = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -1,8 +1,7 @@
 ﻿import { AbpModule } from '@abp/abp.module';
-import { Location, registerLocaleData } from '@angular/common';
+import { Location, registerLocaleData, PlatformLocation } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, Injector, LOCALE_ID, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppAuthService } from '@app/shared/common/auth/app-auth.service';
 import { AppConsts } from '@shared/AppConsts';
@@ -32,15 +31,16 @@ import { DomHelper } from '@shared/helpers/DomHelper';
 import { CookieConsentService } from '@shared/common/session/cookie-consent.service';
 import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bootstrap-datepicker-config.service';
 import { LocaleMappingService } from '@shared/locale-mapping.service';
+import { BrowserModule } from '@angular/platform-browser';
 
 export function appInitializerFactory(
     injector: Injector,
-    Location: Location) {
+    flatformLocation: PlatformLocation) {
     return () => {
         abp.ui.setBusy();
 
         return new Promise<boolean>((resolve, reject) => {
-            AppConsts.appBaseHref = getBaseHref(Location);
+            AppConsts.appBaseHref = getBaseHref(flatformLocation);
             let appBaseUrl = getDocumentOrigin() + AppConsts.appBaseHref;
 
             AppPreBootstrap.run(appBaseUrl, () => {
@@ -200,12 +200,11 @@ export function getCurrentLanguage(): string {
     return abp.localization.currentLanguage.name;
 }
 
-export function getBaseHref(Location: Location): string {
-    // let baseUrl = Location.path();
-    // console.log(baseUrl);
-    // if (baseUrl) {
-    //     return baseUrl;
-    // }
+export function getBaseHref(Location: PlatformLocation): string {
+    let baseUrl = Location.getBaseHrefFromDOM();
+    if (baseUrl) {
+        return baseUrl;
+    }
 
     return '/';
 }
@@ -237,7 +236,7 @@ function handleLogoutRequest(authService: AppAuthService) {
         {
             provide: APP_INITIALIZER,
             useFactory: appInitializerFactory,
-            deps: [Injector, Location],
+            deps: [Injector, PlatformLocation],
             multi: true
         },
         {

@@ -1,0 +1,6 @@
+.inline-edit {
+    width: 100%;
+    overflow: hidden;
+    display: inline-block;
+    height: 18px;
+}

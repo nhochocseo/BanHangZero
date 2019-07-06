@@ -5,13 +5,10 @@ import * as _ from 'lodash';
 export class ArrayToTreeConverterService {
 
     createTree(array: any[], parentIdProperty, idProperty, parentIdValue, childrenProperty: string, fieldMappings): any {
-        console.log(array);
         let tree = [];
-        console.log(parentIdProperty);
-        console.log(parentIdValue);
 
         let nodes = _.filter(array, [parentIdProperty, parentIdValue]);
-console.log(nodes);
+
         _.forEach(nodes, node => {
             let newNode = {
                 data: node

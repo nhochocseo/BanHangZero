@@ -33,6 +33,7 @@ namespace Center.Production.EntityFrameworkCore
         public virtual DbSet<PersistedGrantEntity> PersistedGrants { get; set; }
 
         public virtual DbSet<DanhMuc> DanhMucs { get; set; }
+
         public ProductionDbContext(DbContextOptions<ProductionDbContext> options)
             : base(options)
         {

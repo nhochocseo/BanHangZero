@@ -15,5 +15,6 @@ namespace Center.Production.BanHang.DanhMuc
         [MaxLength(500)]
         public string Url { get; set; }
         public int ParentId { get; set; }
+        public DateTime Created { get; set; }
     }
 }
