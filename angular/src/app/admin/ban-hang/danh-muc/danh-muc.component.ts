@@ -7,6 +7,7 @@ import { Table } from 'primeng/table';
 import { finalize } from 'rxjs/operators';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-danh-muc',
@@ -22,6 +23,7 @@ export class DanhMucComponent extends AppComponentBase {
   constructor(
     private _danhMucService: DanhMucServiceProxy,
     injector: Injector,
+    private toastr: ToastrService
   ) {
     super(injector);
   }
@@ -56,5 +58,7 @@ export class DanhMucComponent extends AppComponentBase {
   onKeydown(event: any){
     event.preventDefault();
   }
-
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+  }
 }

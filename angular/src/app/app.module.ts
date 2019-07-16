@@ -73,6 +73,7 @@ import { CoreModule } from '@metronic/app/core/core.module';
 import { LayoutConfigService } from '@metronic/app/core/services/layout-config.service';
 import { UtilsService } from '@metronic/app/core/services/utils.service';
 import { LayoutRefService } from '@metronic/app/core/services/layout/layout-ref.service';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     declarations: [
@@ -144,7 +145,8 @@ import { LayoutRefService } from '@metronic/app/core/services/layout/layout-ref.
         CoreModule,
         NgxChartsModule,
         TextMaskModule,
-        ImageCropperModule
+        ImageCropperModule,
+        ToastrModule.forRoot(), // ToastrModule added
     ],
     providers: [
         ImpersonationService,

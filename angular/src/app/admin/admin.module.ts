@@ -78,6 +78,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bootstrap-datepicker-config.service';;
 import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component'
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     imports: [
@@ -106,7 +107,7 @@ import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component'
         NgxChartsModule,
         CountoModule,
         TextMaskModule,
-        ImageCropperModule
+        ImageCropperModule,
     ],
     declarations: [
         UsersComponent,
