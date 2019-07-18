@@ -1,7 +1,7 @@
 ﻿import { AbpModule } from '@abp/abp.module';
 import * as ngCommon from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { ChatSignalrService } from '@app/shared/layout/chat/chat-signalr.service';
 import { LinkAccountModalComponent } from '@app/shared/layout/link-account-modal.component';
@@ -73,6 +73,8 @@ import { CoreModule } from '@metronic/app/core/core.module';
 import { LayoutConfigService } from '@metronic/app/core/services/layout-config.service';
 import { UtilsService } from '@metronic/app/core/services/utils.service';
 import { LayoutRefService } from '@metronic/app/core/services/layout/layout-ref.service';
+import { CustomMaterialModule } from './material.module';
+import { SaveDanhMucComponent } from './admin/ban-hang/danh-muc/save-danh-muc/save-danh-muc.component';
 
 @NgModule({
     declarations: [
@@ -118,11 +120,13 @@ import { LayoutRefService } from '@metronic/app/core/services/layout/layout-ref.
         Theme9BrandComponent,
         Theme10BrandComponent,
         Theme11BrandComponent,
-        Theme12BrandComponent
+        Theme12BrandComponent,
+        SaveDanhMucComponent
     ],
     imports: [
         ngCommon.CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpClientModule,
         HttpClientJsonpModule,
         ModalModule.forRoot(),
@@ -144,7 +148,8 @@ import { LayoutRefService } from '@metronic/app/core/services/layout/layout-ref.
         CoreModule,
         NgxChartsModule,
         TextMaskModule,
-        ImageCropperModule
+        ImageCropperModule,
+        CustomMaterialModule
     ],
     providers: [
         ImpersonationService,
@@ -158,6 +163,9 @@ import { LayoutRefService } from '@metronic/app/core/services/layout/layout-ref.
         LayoutConfigService,
         UtilsService,
         LayoutRefService
-    ]
+    ],
+    entryComponents: [
+        SaveDanhMucComponent
+    ],
 })
 export class AppModule { }

@@ -76,8 +76,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CountoModule } from 'angular2-counto';
 import { TextMaskModule } from 'angular2-text-mask';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bootstrap-datepicker-config.service';;
-import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component'
+import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bootstrap-datepicker-config.service';
+import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component';
+;
+import { SaveDanhMucComponent } from './ban-hang/danh-muc/save-danh-muc/save-danh-muc.component';
 
 @NgModule({
     imports: [
@@ -169,10 +171,10 @@ import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component'
         Theme12ThemeUiSettingsComponent,
         Theme11ThemeUiSettingsComponent
 ,
-        DanhMucComponent    ],
+        DanhMucComponent ,  ],
     exports: [
         AddMemberModalComponent,
-        AddRoleModalComponent
+        AddRoleModalComponent,
     ],
     providers: [
         ImpersonationService,
@@ -180,6 +182,6 @@ import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component'
         { provide: BsDatepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDatepickerConfig },
         { provide: BsDaterangepickerConfig, useFactory: NgxBootstrapDatePickerConfigService.getDaterangepickerConfig },
         { provide: BsLocaleService, useFactory: NgxBootstrapDatePickerConfigService.getDatepickerLocale }
-    ]
+    ],
 })
 export class AdminModule { }

@@ -7,6 +7,9 @@ import { Table } from 'primeng/table';
 import { finalize } from 'rxjs/operators';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
+import { SaveDanhMucComponent } from './save-danh-muc/save-danh-muc.component';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-danh-muc',
@@ -22,6 +25,7 @@ export class DanhMucComponent extends AppComponentBase {
   constructor(
     private _danhMucService: DanhMucServiceProxy,
     injector: Injector,
+    private dialogDanhMuc: MatDialog,
   ) {
     super(injector);
   }
@@ -56,5 +60,9 @@ export class DanhMucComponent extends AppComponentBase {
   onKeydown(event: any){
     event.preventDefault();
   }
-
+  openDialog(): void {
+    const dialogRef = this.dialogDanhMuc.open(SaveDanhMucComponent, {
+      width: '500px',
+    });
+  }
 }

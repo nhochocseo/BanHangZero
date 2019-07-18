@@ -1,0 +1,22 @@
+<form [formGroup]="DanhMucForm" (ngSubmit)="onSubmit()">
+    <div class="form-group m-form__group">
+        <label>Tên danh mục</label>
+        <input class="form-control form-control-solid placeholder-no-fix input-ltr" formControlName="name" type="text"/>
+    </div>
+    <div class="form-group m-form__group">
+      <label>Đường dẫn</label>
+      <input class="form-control form-control-solid placeholder-no-fix input-ltr" formControlName="url" type="text"/>
+    </div>
+    <div class="form-group m-form__group">
+        <label>Danh mục cha</label>
+        <select
+                size="1"
+                class="form-control"
+                formControlName="parentId">
+            <option *ngFor="let item of DanhSachDanhMuc" [value]="item.id">{{item.name}}</option>
+        </select>
+    </div>
+    <div class="form-group m-form__group">
+      <button mat-raised-button color="primary" type="submit">Lưu</button>
+    </div>
+</form>
