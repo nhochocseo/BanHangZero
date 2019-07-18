@@ -1,11 +1,11 @@
 <form [formGroup]="DanhMucForm" (ngSubmit)="onSubmit()">
     <div class="form-group m-form__group">
         <label>Tên danh mục</label>
-        <input class="form-control form-control-solid placeholder-no-fix input-ltr" formControlName="name" type="text"/>
+        <input class="form-control form-control-solid placeholder-no-fix input-ltr" formControlName="name" type="text" (keyup)="getNameValueChange()"/>
     </div>
     <div class="form-group m-form__group">
       <label>Đường dẫn</label>
-      <input class="form-control form-control-solid placeholder-no-fix input-ltr" formControlName="url" type="text"/>
+      <input class="form-control form-control-solid placeholder-no-fix input-ltr" formControlName="url" type="text" readonly/>
     </div>
     <div class="form-group m-form__group">
         <label>Danh mục cha</label>

@@ -44,5 +44,35 @@ namespace Center.Production.BanHang.DanhMuc
                 danhMucDtos
                 );
         }
+
+        public int SaveDanhMuc(DanhMuc data)
+        {
+            var check = _danhMucRepository.FirstOrDefault(d => d.Id == data.Id);
+            if (check != null)
+            {
+                check.Name = data.Name;
+                check.Url = data.Url;
+                check.ParentId = data.ParentId;
+                _danhMucRepository.UpdateAsync(check);
+                return 1;
+            } else
+            {
+                _danhMucRepository.InsertAsync(data);
+                return 0;
+            }
+        }
+        public int DeleteDanhMuc(int id)
+        {
+            var check = _danhMucRepository.FirstOrDefault(d => d.Id == id);
+            if (check != null)
+            {
+                _danhMucRepository.DeleteAsync(check);
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

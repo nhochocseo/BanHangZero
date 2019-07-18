@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { DanhMucServiceProxy } from '@shared/service-proxies/service-proxies';
+import { HelperFunction } from '@shared/helpers/helper.function';
 
 @Component({
   selector: 'app-save-danh-muc',
@@ -16,6 +17,7 @@ export class SaveDanhMucComponent implements OnInit {
     public dialogRef: MatDialogRef<SaveDanhMucComponent>,
     private fb: FormBuilder,
     private danhMucService: DanhMucServiceProxy,
+    private helperFunction: HelperFunction,
   ) { }
 
   ngOnInit() {
@@ -35,6 +37,9 @@ export class SaveDanhMucComponent implements OnInit {
         console.log(this.DanhSachDanhMuc);
       }
     });
+  }
+  getNameValueChange() {
+    this.DanhMucForm.controls.url.setValue(this.helperFunction.change_alias(this.DanhMucForm.controls.name.value));
   }
   onSubmit() {
     console.log(this.DanhMucForm);
