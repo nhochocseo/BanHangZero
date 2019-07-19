@@ -7,9 +7,13 @@ namespace Center.Production.BanHang.DanhMuc.Dto
 {
     public class DanhMucDto : EntityDto<long>
     {
+        DanhMucDto()
+        {
+            Created = DateTime.Now;
+        }
         public string Name { get; set; }
         public string Url { get; set; }
         public int ParentId { get; set; }
-        public DateTime Created { get; set; }
+        public DateTime? Created { get; set; }
     }
 }

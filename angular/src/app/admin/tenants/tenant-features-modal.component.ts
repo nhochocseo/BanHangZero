@@ -40,6 +40,7 @@ export class TenantFeaturesModalComponent extends AppComponentBase {
     loadFeatures(): void {
         const self = this;
         self._tenantService.getTenantFeaturesForEdit(this.tenantId).subscribe((result) => {
+            console.log(result);
             self.featureTree.editData = result;
         });
     }

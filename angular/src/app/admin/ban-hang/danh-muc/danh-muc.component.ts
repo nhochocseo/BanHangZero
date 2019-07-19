@@ -60,9 +60,23 @@ export class DanhMucComponent extends AppComponentBase {
   onKeydown(event: any){
     event.preventDefault();
   }
-  openDialog(): void {
+  openDialog(value?: any): void {
     const dialogRef = this.dialogDanhMuc.open(SaveDanhMucComponent, {
       width: '500px',
+      data: {
+        value: value
+      },
+    });
+    const sub = dialogRef.componentInstance.data_event.subscribe(() => {
+      this.getDanhMuc();
+    });
+  }
+  delete(id: number) {
+    this._danhMucService.deleteDanhMuc(id).pipe().subscribe(result => {
+      if (result) {
+        this.notify.success('Xóa thành công', 'Thành công');
+        this.getDanhMuc();
+      }
     });
   }
 }

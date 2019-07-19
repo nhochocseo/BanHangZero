@@ -41,6 +41,10 @@
                                         {{'Created' | localize}}
                                         <p-sortIcon field="created"></p-sortIcon>
                                     </th>
+                                    <th style="width: 200px" pSortableColumn="created">
+                                        {{'Tuy Chỉnh' | localize}}
+                                        <p-sortIcon field="created"></p-sortIcon>
+                                    </th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-record="$implicit">
@@ -55,6 +59,10 @@
                                     <td style="width: 200px">
                                         <span class="ui-column-title"> {{'Created' | localize}}</span>
                                         {{record.created | momentFormat:'L'}}
+                                    </td>
+                                    <td style="width: 200px">
+                                        <span class="ui-column-title"> {{'Tùy Chỉnh' | localize}}</span>
+                                        <a href="javascript:;" (click)="openDialog(record)">Sửa</a> | <a href="javascript:;" (click)="delete(record.id)">Xóa</a>
                                     </td>
                                 </tr>
                             </ng-template>

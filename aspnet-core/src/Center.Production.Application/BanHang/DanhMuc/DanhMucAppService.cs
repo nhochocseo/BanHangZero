@@ -5,9 +5,11 @@ using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
+using Abp.UI;
 using Center.Production.Authorization;
 using Center.Production.BanHang.DanhMuc.Dto;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -45,7 +47,7 @@ namespace Center.Production.BanHang.DanhMuc
                 );
         }
 
-        public int SaveDanhMuc(DanhMuc data)
+        public async Task<int> SaveDanhMuc(DanhMucDto data)
         {
             var check = _danhMucRepository.FirstOrDefault(d => d.Id == data.Id);
             if (check != null)
@@ -53,11 +55,17 @@ namespace Center.Production.BanHang.DanhMuc
                 check.Name = data.Name;
                 check.Url = data.Url;
                 check.ParentId = data.ParentId;
-                _danhMucRepository.UpdateAsync(check);
+                await    _danhMucRepository.UpdateAsync(check);
                 return 1;
-            } else
+            }
+            else
             {
-                _danhMucRepository.InsertAsync(data);
+                data.Id = 0;
+                var danhmuc = ObjectMapper.Map<DanhMuc>(data);
+                await _danhMucRepository.InsertAsync(danhmuc);
+
+                //await CurrentUnitOfWork.SaveChangesAsync();
+
                 return 0;
             }
         }
