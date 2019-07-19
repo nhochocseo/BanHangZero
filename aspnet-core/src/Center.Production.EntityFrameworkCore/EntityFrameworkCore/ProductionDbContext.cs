@@ -11,6 +11,7 @@ using Center.Production.MultiTenancy.Accounting;
 using Center.Production.MultiTenancy.Payments;
 using Center.Production.Storage;
 using Center.Production.BanHang.DanhMuc;
+using Center.Production.BanHang.TinTuc;
 
 namespace Center.Production.EntityFrameworkCore
 {
@@ -33,6 +34,9 @@ namespace Center.Production.EntityFrameworkCore
         public virtual DbSet<PersistedGrantEntity> PersistedGrants { get; set; }
 
         public virtual DbSet<DanhMuc> DanhMucs { get; set; }
+
+        // add 19/7/2019
+        public virtual DbSet<TinTuc> TinTucs { get; set; }
 
         public ProductionDbContext(DbContextOptions<ProductionDbContext> options)
             : base(options)

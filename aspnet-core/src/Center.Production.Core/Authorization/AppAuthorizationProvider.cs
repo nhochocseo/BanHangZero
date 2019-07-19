@@ -90,6 +90,7 @@ namespace Center.Production.Authorization
             //Danh muc
             var danhmucs = pages.CreateChildPermission(AppPermissions.Pages_DanhMuc, L("DanhMucs"), multiTenancySides: MultiTenancySides.Host);
 
+            var tintucs = pages.CreateChildPermission(AppPermissions.Pages_TinTuc, L("TinTucs"), multiTenancySides: MultiTenancySides.Host);
         }
 
         private static ILocalizableString L(string name)
