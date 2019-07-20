@@ -19,6 +19,7 @@ import { TreeDataHelperService } from './tree-data-helper.service';
 import { LocalizePipe } from '@shared/common/pipes/localize.pipe';
 import { PermissionPipe } from '@shared/common/pipes/permission.pipe';
 import { FeatureCheckerPipe } from '@shared/common/pipes/feature-checker.pipe';
+import { TrangThaiTinTucPipe } from '@shared/common/pipes/trangthaitintuc.pipe';
 
 @NgModule({
     imports: [
@@ -45,7 +46,8 @@ import { FeatureCheckerPipe } from '@shared/common/pipes/feature-checker.pipe';
         NullDefaultValueDirective,
         LocalizePipe,
         PermissionPipe,
-        FeatureCheckerPipe
+        FeatureCheckerPipe,
+        TrangThaiTinTucPipe
     ],
     exports: [
         EqualValidator,
@@ -60,7 +62,8 @@ import { FeatureCheckerPipe } from '@shared/common/pipes/feature-checker.pipe';
         NullDefaultValueDirective,
         LocalizePipe,
         PermissionPipe,
-        FeatureCheckerPipe
+        FeatureCheckerPipe,
+        TrangThaiTinTucPipe
     ]
 })
 export class UtilsModule { }

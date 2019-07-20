@@ -18,6 +18,7 @@ export class AppNavigationService {
     getMenu(): AppMenu {
         return new AppMenu('MainMenu', 'MainMenu', [
             new AppMenuItem('Danh Mục', 'Pages.DanhMuc', 'flaticon-line-graph', '/app/admin/danh-muc'),
+            new AppMenuItem('Tin Tức', 'Pages.TinTuc', 'flaticon-line-graph', '/app/admin/tin-tuc'),
 
             new AppMenuItem('Dashboard', 'Pages.Administration.Host.Dashboard', 'flaticon-line-graph', '/app/admin/hostDashboard'),
             new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),

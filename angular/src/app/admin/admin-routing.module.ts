@@ -18,6 +18,7 @@ import { TenantsComponent } from './tenants/tenants.component';
 import { UiCustomizationComponent } from './ui-customization/ui-customization.component';
 import { UsersComponent } from './users/users.component';
 import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component';
+import { TinTucComponent } from './ban-hang/tin-tuc/tin-tuc.component';
 
 @NgModule({
     imports: [
@@ -26,7 +27,7 @@ import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component';
                 path: '',
                 children: [
                     { path: 'danh-muc', component: DanhMucComponent, data: { permission: 'Pages.DanhMuc' } },
-
+                    { path: 'tin-tuc', component: TinTucComponent, data: { permission: 'Pages.TinTuc' } },
 
                     { path: 'users', component: UsersComponent, data: { permission: 'Pages.Administration.Users' } },
                     { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Administration.Roles' } },

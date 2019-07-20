@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { DanhMucServiceProxy, DanhMuc, IDanhMucDto } from '@shared/service-proxies/service-proxies';
+import { DanhMucServiceProxy, IDanhMucDto } from '@shared/service-proxies/service-proxies';
 import { HelperFunction } from '@shared/helpers/helper.function';
 import { NotifyService } from 'abp-ng2-module/dist/src/notify/notify.service';
 

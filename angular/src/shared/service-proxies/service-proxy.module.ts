@@ -41,6 +41,7 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.PayPalPaymentServiceProxy,
         ApiServiceProxies.StripePaymentServiceProxy,
         ApiServiceProxies.DanhMucServiceProxy,
+        ApiServiceProxies.TinTucServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })
