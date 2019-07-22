@@ -6511,6 +6511,81 @@ export class ProfileServiceProxy {
 }
 
 @Injectable()
+export class QuanLyNhuanServiceServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @param filter (optional) 
+     * @param sorting (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getQuanLyNhuan(filter: string | null | undefined, sorting: string | null | undefined, skipCount: number | null | undefined, maxResultCount: number | null | undefined): Observable<PagedResultDtoOfAppQuanLyNhuanDto> {
+        let url_ = this.baseUrl + "/api/services/app/QuanLyNhuanService/GetQuanLyNhuan?";
+        if (filter !== undefined)
+            url_ += "Filter=" + encodeURIComponent("" + filter) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetQuanLyNhuan(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetQuanLyNhuan(<any>response_);
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfAppQuanLyNhuanDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfAppQuanLyNhuanDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetQuanLyNhuan(response: HttpResponseBase): Observable<PagedResultDtoOfAppQuanLyNhuanDto> {
+        const status = response.status;
+        const responseBlob = 
+            response instanceof HttpResponse ? response.body : 
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfAppQuanLyNhuanDto.fromJS(resultData200) : new PagedResultDtoOfAppQuanLyNhuanDto();
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<PagedResultDtoOfAppQuanLyNhuanDto>(<any>null);
+    }
+}
+
+@Injectable()
 export class RoleServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -17051,6 +17126,258 @@ export class ChangeUserLanguageDto implements IChangeUserLanguageDto {
 
 export interface IChangeUserLanguageDto {
     languageName: string;
+}
+
+export class PagedResultDtoOfAppQuanLyNhuanDto implements IPagedResultDtoOfAppQuanLyNhuanDto {
+    totalCount!: number | undefined;
+    items!: AppQuanLyNhuanDto[] | undefined;
+
+    constructor(data?: IPagedResultDtoOfAppQuanLyNhuanDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.totalCount = data["totalCount"];
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [] as any;
+                for (let item of data["items"])
+                    this.items!.push(AppQuanLyNhuanDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfAppQuanLyNhuanDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new PagedResultDtoOfAppQuanLyNhuanDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["totalCount"] = this.totalCount;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+}
+
+export interface IPagedResultDtoOfAppQuanLyNhuanDto {
+    totalCount: number | undefined;
+    items: AppQuanLyNhuanDto[] | undefined;
+}
+
+export class AppQuanLyNhuanDto implements IAppQuanLyNhuanDto {
+    maTin!: string | undefined;
+    ngayLenBai!: moment.Moment | undefined;
+    maNhanSu!: string | undefined;
+    tenNhanSu!: string | undefined;
+    chuyenMuc!: string | undefined;
+    viTri!: string | undefined;
+    butDanh!: string | undefined;
+    tenBaiViet!: string | undefined;
+    loaiBaiViet!: string | undefined;
+    trangThai!: number | undefined;
+    tyLe!: number | undefined;
+    appHangBaiVietREF!: number | undefined;
+    tongSoLuongAnh!: number | undefined;
+    tongSoLuongClip!: number | undefined;
+    slClipA!: number | undefined;
+    slClipB!: number | undefined;
+    slClipC!: number | undefined;
+    slClipSanXuat!: number | undefined;
+    nhuanBaiViet!: number | undefined;
+    heSo!: number | undefined;
+    thuong!: number | undefined;
+    phat!: number | undefined;
+    tongNhuan!: number | undefined;
+    linkBai!: string | undefined;
+    linkClip!: string | undefined;
+    tongView!: number | undefined;
+    viewWeb!: number | undefined;
+    viewMobile!: number | undefined;
+    tongLike!: number | undefined;
+    tongShare!: number | undefined;
+    ghiChu!: string | undefined;
+    trangThaiXyLy!: number | undefined;
+    nguoiCapNhat!: string | undefined;
+    lyDoNangHang!: string | undefined;
+    lyDoThuongPhat!: string | undefined;
+    creationTime!: moment.Moment | undefined;
+    creatorUserId!: string | undefined;
+    lastModificationTime!: moment.Moment | undefined;
+    lastModifierUserId!: string | undefined;
+    isDeleted!: boolean | undefined;
+    deleterUserId!: string | undefined;
+    deletionTime!: moment.Moment | undefined;
+    id!: number | undefined;
+
+    constructor(data?: IAppQuanLyNhuanDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.maTin = data["maTin"];
+            this.ngayLenBai = data["ngayLenBai"] ? moment(data["ngayLenBai"].toString()) : <any>undefined;
+            this.maNhanSu = data["maNhanSu"];
+            this.tenNhanSu = data["tenNhanSu"];
+            this.chuyenMuc = data["chuyenMuc"];
+            this.viTri = data["viTri"];
+            this.butDanh = data["butDanh"];
+            this.tenBaiViet = data["tenBaiViet"];
+            this.loaiBaiViet = data["loaiBaiViet"];
+            this.trangThai = data["trangThai"];
+            this.tyLe = data["tyLe"];
+            this.appHangBaiVietREF = data["appHangBaiVietREF"];
+            this.tongSoLuongAnh = data["tongSoLuongAnh"];
+            this.tongSoLuongClip = data["tongSoLuongClip"];
+            this.slClipA = data["slClipA"];
+            this.slClipB = data["slClipB"];
+            this.slClipC = data["slClipC"];
+            this.slClipSanXuat = data["slClipSanXuat"];
+            this.nhuanBaiViet = data["nhuanBaiViet"];
+            this.heSo = data["heSo"];
+            this.thuong = data["thuong"];
+            this.phat = data["phat"];
+            this.tongNhuan = data["tongNhuan"];
+            this.linkBai = data["linkBai"];
+            this.linkClip = data["linkClip"];
+            this.tongView = data["tongView"];
+            this.viewWeb = data["viewWeb"];
+            this.viewMobile = data["viewMobile"];
+            this.tongLike = data["tongLike"];
+            this.tongShare = data["tongShare"];
+            this.ghiChu = data["ghiChu"];
+            this.trangThaiXyLy = data["trangThaiXyLy"];
+            this.nguoiCapNhat = data["nguoiCapNhat"];
+            this.lyDoNangHang = data["lyDoNangHang"];
+            this.lyDoThuongPhat = data["lyDoThuongPhat"];
+            this.creationTime = data["creationTime"] ? moment(data["creationTime"].toString()) : <any>undefined;
+            this.creatorUserId = data["creatorUserId"];
+            this.lastModificationTime = data["lastModificationTime"] ? moment(data["lastModificationTime"].toString()) : <any>undefined;
+            this.lastModifierUserId = data["lastModifierUserId"];
+            this.isDeleted = data["isDeleted"];
+            this.deleterUserId = data["deleterUserId"];
+            this.deletionTime = data["deletionTime"] ? moment(data["deletionTime"].toString()) : <any>undefined;
+            this.id = data["id"];
+        }
+    }
+
+    static fromJS(data: any): AppQuanLyNhuanDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new AppQuanLyNhuanDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["maTin"] = this.maTin;
+        data["ngayLenBai"] = this.ngayLenBai ? this.ngayLenBai.toISOString() : <any>undefined;
+        data["maNhanSu"] = this.maNhanSu;
+        data["tenNhanSu"] = this.tenNhanSu;
+        data["chuyenMuc"] = this.chuyenMuc;
+        data["viTri"] = this.viTri;
+        data["butDanh"] = this.butDanh;
+        data["tenBaiViet"] = this.tenBaiViet;
+        data["loaiBaiViet"] = this.loaiBaiViet;
+        data["trangThai"] = this.trangThai;
+        data["tyLe"] = this.tyLe;
+        data["appHangBaiVietREF"] = this.appHangBaiVietREF;
+        data["tongSoLuongAnh"] = this.tongSoLuongAnh;
+        data["tongSoLuongClip"] = this.tongSoLuongClip;
+        data["slClipA"] = this.slClipA;
+        data["slClipB"] = this.slClipB;
+        data["slClipC"] = this.slClipC;
+        data["slClipSanXuat"] = this.slClipSanXuat;
+        data["nhuanBaiViet"] = this.nhuanBaiViet;
+        data["heSo"] = this.heSo;
+        data["thuong"] = this.thuong;
+        data["phat"] = this.phat;
+        data["tongNhuan"] = this.tongNhuan;
+        data["linkBai"] = this.linkBai;
+        data["linkClip"] = this.linkClip;
+        data["tongView"] = this.tongView;
+        data["viewWeb"] = this.viewWeb;
+        data["viewMobile"] = this.viewMobile;
+        data["tongLike"] = this.tongLike;
+        data["tongShare"] = this.tongShare;
+        data["ghiChu"] = this.ghiChu;
+        data["trangThaiXyLy"] = this.trangThaiXyLy;
+        data["nguoiCapNhat"] = this.nguoiCapNhat;
+        data["lyDoNangHang"] = this.lyDoNangHang;
+        data["lyDoThuongPhat"] = this.lyDoThuongPhat;
+        data["creationTime"] = this.creationTime ? this.creationTime.toISOString() : <any>undefined;
+        data["creatorUserId"] = this.creatorUserId;
+        data["lastModificationTime"] = this.lastModificationTime ? this.lastModificationTime.toISOString() : <any>undefined;
+        data["lastModifierUserId"] = this.lastModifierUserId;
+        data["isDeleted"] = this.isDeleted;
+        data["deleterUserId"] = this.deleterUserId;
+        data["deletionTime"] = this.deletionTime ? this.deletionTime.toISOString() : <any>undefined;
+        data["id"] = this.id;
+        return data; 
+    }
+}
+
+export interface IAppQuanLyNhuanDto {
+    maTin: string | undefined;
+    ngayLenBai: moment.Moment | undefined;
+    maNhanSu: string | undefined;
+    tenNhanSu: string | undefined;
+    chuyenMuc: string | undefined;
+    viTri: string | undefined;
+    butDanh: string | undefined;
+    tenBaiViet: string | undefined;
+    loaiBaiViet: string | undefined;
+    trangThai: number | undefined;
+    tyLe: number | undefined;
+    appHangBaiVietREF: number | undefined;
+    tongSoLuongAnh: number | undefined;
+    tongSoLuongClip: number | undefined;
+    slClipA: number | undefined;
+    slClipB: number | undefined;
+    slClipC: number | undefined;
+    slClipSanXuat: number | undefined;
+    nhuanBaiViet: number | undefined;
+    heSo: number | undefined;
+    thuong: number | undefined;
+    phat: number | undefined;
+    tongNhuan: number | undefined;
+    linkBai: string | undefined;
+    linkClip: string | undefined;
+    tongView: number | undefined;
+    viewWeb: number | undefined;
+    viewMobile: number | undefined;
+    tongLike: number | undefined;
+    tongShare: number | undefined;
+    ghiChu: string | undefined;
+    trangThaiXyLy: number | undefined;
+    nguoiCapNhat: string | undefined;
+    lyDoNangHang: string | undefined;
+    lyDoThuongPhat: string | undefined;
+    creationTime: moment.Moment | undefined;
+    creatorUserId: string | undefined;
+    lastModificationTime: moment.Moment | undefined;
+    lastModifierUserId: string | undefined;
+    isDeleted: boolean | undefined;
+    deleterUserId: string | undefined;
+    deletionTime: moment.Moment | undefined;
+    id: number | undefined;
 }
 
 export class ListResultDtoOfRoleListDto implements IListResultDtoOfRoleListDto {

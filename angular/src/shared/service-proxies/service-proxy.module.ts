@@ -42,6 +42,7 @@ import * as ApiServiceProxies from './service-proxies';
         ApiServiceProxies.StripePaymentServiceProxy,
         ApiServiceProxies.DanhMucServiceProxy,
         ApiServiceProxies.TinTucServiceProxy,
+        ApiServiceProxies.QuanLyNhuanServiceServiceProxy,
         { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true }
     ]
 })

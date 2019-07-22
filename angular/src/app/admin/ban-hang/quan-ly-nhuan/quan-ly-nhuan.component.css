@@ -1,0 +1,17 @@
+.form-control-sm {
+    padding: 1.45rem 0.8rem!important;
+}
+.m-datatable.m-datatable--default.m-datatable--scroll > .m-datatable__table > .m-datatable__head, .m-datatable.m-datatable--default.m-datatable--scroll > .m-datatable__table > .m-datatable__foot {
+    overflow: initial!important;
+}
+.m-datatable.m-datatable--default.m-datatable--loaded > .m-datatable__table > .m-datatable__head .m-datatable__row > .m-datatable__cell, .m-datatable.m-datatable--default.m-datatable--loaded > .m-datatable__table > .m-datatable__body .m-datatable__row > .m-datatable__cell, .m-datatable.m-datatable--default.m-datatable--loaded > .m-datatable__table > .m-datatable__foot .m-datatable__row > .m-datatable__cell {
+    border: 1px solid #ccc;
+}
+.icon_custom {
+	width: 30px;
+    display: inline-block;
+    text-align: center;
+}
+.table-bordered th, .table-bordered td {
+    border: 1px solid #e7e9ea;
+}
