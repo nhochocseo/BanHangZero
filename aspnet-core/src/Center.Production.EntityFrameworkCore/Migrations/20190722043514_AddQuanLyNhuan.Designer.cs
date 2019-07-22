@@ -4,14 +4,16 @@ using Center.Production.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Center.Production.Migrations
 {
     [DbContext(typeof(ProductionDbContext))]
-    partial class ProductionDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190722043514_AddQuanLyNhuan")]
+    partial class AddQuanLyNhuan
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1138,7 +1140,7 @@ namespace Center.Production.Migrations
                     b.Property<string>("LinkBai")
                         .HasMaxLength(1000);
 
-                    b.Property<string>("LinkClip")
+                    b.Property<string>("LinlClip")
                         .HasMaxLength(1000);
 
                     b.Property<string>("LoaiBaiViet")
@@ -1163,7 +1165,7 @@ namespace Center.Production.Migrations
 
                     b.Property<int>("NhuanBaiViet");
 
-                    b.Property<decimal?>("Phat");
+                    b.Property<decimal>("Phat");
 
                     b.Property<int>("SLClipA");
 
@@ -1179,7 +1181,7 @@ namespace Center.Production.Migrations
                     b.Property<string>("TenNhanSu")
                         .HasMaxLength(100);
 
-                    b.Property<decimal?>("Thuong");
+                    b.Property<decimal>("Thuong");
 
                     b.Property<int>("TongLike");
 

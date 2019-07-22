@@ -19,6 +19,7 @@ import { UiCustomizationComponent } from './ui-customization/ui-customization.co
 import { UsersComponent } from './users/users.component';
 import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component';
 import { TinTucComponent } from './ban-hang/tin-tuc/tin-tuc.component';
+import { QuanLyNhuanComponent } from './ban-hang/quan-ly-nhuan/quan-ly-nhuan.component';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { TinTucComponent } from './ban-hang/tin-tuc/tin-tuc.component';
             {
                 path: '',
                 children: [
+                    { path: 'quan-ly-nhuan', component: QuanLyNhuanComponent, data: { permission: 'Pages.DanhMuc' } },
                     { path: 'danh-muc', component: DanhMucComponent, data: { permission: 'Pages.DanhMuc' } },
                     { path: 'tin-tuc', component: TinTucComponent, data: { permission: 'Pages.TinTuc' } },
 

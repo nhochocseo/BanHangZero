@@ -80,7 +80,8 @@ import { NgxBootstrapDatePickerConfigService } from 'assets/ngx-bootstrap/ngx-bo
 import { DanhMucComponent } from './ban-hang/danh-muc/danh-muc.component';
 import { SaveDanhMucComponent } from './ban-hang/danh-muc/save-danh-muc/save-danh-muc.component';
 import { TinTucComponent } from './ban-hang/tin-tuc/tin-tuc.component';
-import { SaveTinTucComponent } from './ban-hang/tin-tuc/save-tin-tuc/save-tin-tuc.component';
+import { SaveTinTucComponent } from './ban-hang/tin-tuc/save-tin-tuc/save-tin-tuc.component';;
+import { QuanLyNhuanComponent } from './ban-hang/quan-ly-nhuan/quan-ly-nhuan.component'
 
 @NgModule({
     imports: [
@@ -174,7 +175,8 @@ import { SaveTinTucComponent } from './ban-hang/tin-tuc/save-tin-tuc/save-tin-tu
 ,
         DanhMucComponent ,
         TinTucComponent,
-        SaveTinTucComponent  ],
+        SaveTinTucComponent ,
+        QuanLyNhuanComponent ],
     exports: [
         AddMemberModalComponent,
         AddRoleModalComponent,

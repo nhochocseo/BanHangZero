@@ -12,6 +12,7 @@ using Center.Production.MultiTenancy.Payments;
 using Center.Production.Storage;
 using Center.Production.BanHang.DanhMuc;
 using Center.Production.BanHang.TinTuc;
+using Center.Production.BanHang.QuanLyNhuan;
 
 namespace Center.Production.EntityFrameworkCore
 {
@@ -37,6 +38,10 @@ namespace Center.Production.EntityFrameworkCore
 
         // add 19/7/2019
         public virtual DbSet<TinTuc> TinTucs { get; set; }
+
+        // add bang cham nhuan
+        public virtual DbSet<AppQuanLyNhuan> AppQuanLyNhuans { get; set; }
+
 
         public ProductionDbContext(DbContextOptions<ProductionDbContext> options)
             : base(options)

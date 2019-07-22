@@ -71,5 +71,6 @@
         public const string Pages_DanhMuc = "Pages.DanhMuc";
         public const string Pages_TinTuc = "Pages.TinTuc";
 
+        public const string Pages_QuanLyNhuan = "Pages.QuanLyNhuan";
     }
 }

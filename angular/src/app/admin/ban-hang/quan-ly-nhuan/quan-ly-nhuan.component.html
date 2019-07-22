@@ -1,0 +1,73 @@
+<div [@routerTransition]>
+  <div class="m-subheader">
+    <div class="row align-items-center">
+        <div class="mr-auto col-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">
+                <span>Danh sách chấm nhuận</span>
+            </h3>
+            <div class="m-section__sub">
+              Tổng nhuận: 100.000.000
+            </div>
+        </div>
+        <div class="col text-right mt-3 mt-md-0">
+            <button class="btn btn-primary"><i class="fa fa-plus"></i> Đồng bộ IMS</button>
+        </div>
+    </div>
+</div>
+  <div class="m-content">
+      <div class="m-portlet m-portlet--mobile">
+          <div class="m-portlet__body">
+              <form class="horizontal-form" autocomplete="off">
+                  <div class="m-form m-form--label-align-right">
+                      <div class="row align-items-center m--margin-bottom-10">
+                          <div class="col-xl-12">
+                              <div class="form-group m-form__group align-items-center">
+                                  <div class="input-group">
+                                      <input [(ngModel)]="filterText" name="filterText" autoFocus class="form-control m-input" [placeholder]="l('SearchWithThreeDot')" type="text">
+                                      <span class="input-group-btn">
+                                          <button class="btn btn-primary" type="submit"><i class="flaticon-search-1" [attr.aria-label]="l('Search')"></i></button>
+                                      </span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row m--margin-bottom-10" [hidden]="!advancedFiltersAreShown">
+                          <div [ngClass]="{'col-md-6': ('Pages.Administration.Roles' | permission), 'col-md-12':!isGranted('Pages.Administration.Roles')}">
+                              <div class="form-group">
+                                  
+                              </div>
+                          </div>
+                          <div class="col-md-6" *ngIf="'Pages.Administration.Roles' | permission">
+                              <div class="form-group">
+                                  
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                              
+                          </div>
+                      </div>
+
+                      <div class="row margin-bottom-10" *ngIf="advancedFiltersAreShown">
+                          <div class="col-sm-12 text-right">
+                              <button class="btn btn-metal"><i class="fa fa-sync"></i> {{"Refresh" | localize}}</button>
+                          </div>
+                      </div>
+                      <div class="row margin-bottom-10">
+                          <div class="col-sm-12">
+                              <span class="clickable-item text-muted" *ngIf="!advancedFiltersAreShown" (click)="advancedFiltersAreShown=!advancedFiltersAreShown"><i class="fa fa-angle-down"></i> {{"ShowAdvancedFilters" | localize}}</span>
+                              <span class="clickable-item text-muted" *ngIf="advancedFiltersAreShown" (click)="advancedFiltersAreShown=!advancedFiltersAreShown"><i class="fa fa-angle-up"></i> {{"HideAdvancedFilters" | localize}}</span>
+                          </div>
+                      </div>
+                  </div>
+              </form>
+
+              <div class="row align-items-center">
+                  <!--<Primeng-TurboTable-Start>-->
+                 table
+                  <!--<Primeng-TurboTable-End>-->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
