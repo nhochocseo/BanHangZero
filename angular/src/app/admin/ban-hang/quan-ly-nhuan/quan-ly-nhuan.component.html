@@ -176,9 +176,10 @@
                                                 MNS: {{item.maNhanSu}} - {{item.viTri}}
                                             </span>
                                         </td>
-                                        <td>Văn Nguyễn
+                                        <td>
+                                            {{item.butDanh}}
                                         </td>
-                                        <td><a href="" title="">Phụ nữ xứ Nghệ vượt biên bán bào thai do cuộc sống…</a></td>
+                                        <td><a href="{{item.linkBai}}" title="{{item.tenBaiViet}}">{{item.tenBaiViet}}</a></td>
                                         <td>
                                             <label class="m-checkbox">
                                                 <input id="closeButton" type="checkbox" value="checked">Sản xuất
@@ -186,13 +187,14 @@
                                             </label>
                                         </td>
                                         <td>
-                                            <select class="form-control" id="m_notify_placement_from">
-                                                <option value="top">Tin thường</option>
-                                                <option value="tinhot">Tin hot</option>
-                                            </select>
+                                                <!-- <select class="form-control" id="m_notify_placement_from">
+                                                        <option value="top">Tin thường</option>
+                                                        <option value="tinhot">Tin hot</option>
+                                                    </select> -->
+                                            {{item.loaiBaiViet}}
                                         </td>
                                         <td>
-                                            40%
+                                                {{item.tyLe}}%
                                         </td>
                                         <td>
                                             <select class="form-control" id="m_notify_placement_from">
@@ -249,105 +251,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- <table class="m-datatable__table" style="display: block; min-height: 300px; max-height: 350px; overflow: scroll;">
-                            <thead class="m-datatable__head">
-                                <tr class="m-datatable__row m-datatable__row--active" style="left: 0px;">
-                                        <th colspan="6" class="m-datatable__cell">
-                                        <span style="width: 977px; text-align: center;">Thông tin chung</span>
-                                    </th>
-                                    <th colspan="2" class="m-datatable__cell">
-                                        <span style="width: 100px; text-align: center;">Đánh giá</span>
-                                    </th>
-                                        <th colspan="2" class="m-datatable__cell">
-                                        <span style="width: 100px; text-align: center;">Đánh giá</span>
-                                    </th>
-                                    <th colspan="2" class="m-datatable__cell">
-                                        <span style="width: 100px; text-align: center;">Đánh giá</span>
-                                    </th>
-                                    </tr>
-                                <tr class="m-datatable__row m-datatable__row--active" style="left: 0px;">
-                                    <th class="m-datatable__cell">
-                                        <span style="width: 60px;">Mã tin</span>
-                                    </th>
-                                    <th class="m-datatable__cell">
-                                        <span style="width: 120px;">Ngày đăng bài</span>
-                                    </th>
-                                    <th class="m-datatable__cell">
-                                        <span style="width: 120px;">Chuyên mục</span>
-                                    </th>
-                                    <th class="m-datatable__cell">
-                                        <span style="width: 90px;">Họ và tên</span>
-                                    </th>
-                                    <th class="m-datatable__cell">
-                                        <span style="width: 90px;">Bút danh</span>
-                                    </th>
-                                    <th class="m-datatable__cell">
-                                        <span style="width: 150px;">Bài viết</span>
-                                    </th>
-                                    <th data-field="CompanyAgent" class="m-datatable__cell">
-                                        <span style="width: 100px;">Nguồn sx</span>
-                                    </th>
-                                    <th data-field="Website" class="m-datatable__cell">
-                                        <span style="width: 100px;">Loại bài</span>
-                                    </th>
-                                    <th data-field="Currency" class="m-datatable__cell">
-                                        <span style="width: 50px;">Tỷ lệ</span>
-                                    </th>
-                                    <th data-field="Department" class="m-datatable__cell">
-                                        <span style="width: 50px;">Loại</span>
-                                    </th>
-                                    <th data-field="ShipDate" class="m-datatable__cell">
-                                        <span>SL</span>
-                                    </th>
-                                    <th data-field="TimeZone" class="m-datatable__cell">
-                                        <span>SL</span>
-                                    </th>
-                                    <th data-field="Latitude" class="m-datatable__cell">
-                                        <span>Tiền nhuận</span>
-                                    </th>
-                                    <th data-field="Longitude" class="m-datatable__cell">
-                                        <span>NHUẬN CLIP SX</span>
-                                    </th>
-                                    <th data-field="Status" class="m-datatable__cell">
-                                        <span>NHUẬN BÀI</span>
-                                    </th>
-                                    <th data-field="Type" class="m-datatable__cell">
-                                        <span>HỆ SỐ</span>
-                                    </th>
-                                    <th data-field="Actions" class="m-datatable__cell">
-                                        <span>THƯỞNG/PHẠT</span>
-                                    </th>
-                                    <th data-field="Actions" class="m-datatable__cell">
-                                        <span>TỔNG NHUẬN</span>
-                                    </th>
-                                    <th data-field="Actions" class="m-datatable__cell">
-                                        <span>TỔNG VIEW</span>
-                                    </th>
-                                    <th data-field="Actions" class="m-datatable__cell">
-                                        <span>TRẠNG THÁI</span>
-                                    </th>
-                                    <th data-field="Actions" class="m-datatable__cell">
-                                        <span>GHI CHÚ</span>
-                                    </th>
-                                    <th data-field="Actions" class="m-datatable__cell">
-                                        <span>HÀNH ĐỘNG</span>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="m-datatable__body ps ps--active-x ps--active-y" style="max-height: 299px;">
-                                <tr data-row="0" class="m-datatable__row m-datatable__row--active" style="left: 0px;">
-                                    <td>
-                                        <span>0007-3230 - RU</span>
-                                    </td>
-                                </tr>
-                                <div class="ps__rail-x" style="width: 1211px; left: 0px; bottom: -200px;">
-                                    <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 584px;"></div>
-                                </div>
-                                <div class="ps__rail-y" style="top: 200px; height: 299px; right: 0px;">
-                                    <div class="ps__thumb-y" tabindex="0" style="top: 104px; height: 155px;"></div>
-                                </div>
-                            </tbody>
-                        </table> -->
+                        
                         <div class="m-datatable__pager m-datatable--paging-loaded clearfix">
                             <ul class="m-datatable__pager-nav">
                                 <li><a title="First" class="m-datatable__pager-link m-datatable__pager-link--first m-datatable__pager-link--disabled" data-page="1" disabled="disabled"><i class="la la-angle-double-left"></i></a></li>
