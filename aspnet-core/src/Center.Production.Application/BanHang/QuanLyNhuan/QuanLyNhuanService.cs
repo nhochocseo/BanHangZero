@@ -28,7 +28,7 @@ namespace Center.Production.BanHang.QuanLyNhuan
             
             var query = _quanLyNhuanRepository.GetAll().WhereIf(
                 !string.IsNullOrWhiteSpace(input.Filter),
-                q => q.ButDanh.Contains(input.Filter) || q.ChuyenMuc.Contains(input.Filter)
+                q => q.TenBaiViet.Contains(input.Filter) || q.ChuyenMuc.Contains(input.Filter)
                 );
             var quanLyNhuanCount = await query.CountAsync();
 

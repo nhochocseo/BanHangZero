@@ -12,35 +12,36 @@ namespace Center.Production.BanHang.QuanLyNhuan.Dto
         public string MaTin { get; set; }
 
         public DateTime NgayLenBai { get; set; }
-
-        [MaxLength(10)]
-        public string MaNhanSu { get; set; }
-
-        [MaxLength(100)]
-        public string TenNhanSu { get; set; }
+        
+        public int AppNhanSuRef { get; set; }
 
         [MaxLength(100)]
         public string ChuyenMuc { get; set; }
 
         [MaxLength(100)]
         public string ViTri { get; set; }
-
-        [MaxLength(50)]
-        public string ButDanh { get; set; }
+        
+        public string AppButDanhRef { get; set; }
 
         [MaxLength(500)]
         public string TenBaiViet { get; set; }
-
-        [MaxLength(50)]
-        public string LoaiBaiViet { get; set; }
+        
+        public string AppLoaiBaiRef { get; set; }
 
         public Byte TrangThai { get; set; }
 
         public Decimal TyLe { get; set; }
 
-        public int AppHangBaiVietREF { get; set; }
+        public int AppHangREF { get; set; }
 
         public Int32 TongSoLuongAnh { get; set; }
+
+        public Int32 SLAA { get; set; }
+        public Int32 SLAB { get; set; }
+
+        public Int32 SLAC { get; set; }
+
+        public Decimal TongTienNhuanAnh { get; set; }
 
         public Int32 TongSoLuongClip { get; set; }
 
@@ -56,9 +57,9 @@ namespace Center.Production.BanHang.QuanLyNhuan.Dto
 
         public Decimal HeSo { get; set; }
 
-        public Decimal Thuong { get; set; }
+        public Decimal? Thuong { get; set; }
 
-        public Decimal Phat { get; set; }
+        public Decimal? Phat { get; set; }
 
         public Decimal TongNhuan { get; set; }
 

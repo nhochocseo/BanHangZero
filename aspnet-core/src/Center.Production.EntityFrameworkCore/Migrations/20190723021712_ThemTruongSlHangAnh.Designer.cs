@@ -4,14 +4,16 @@ using Center.Production.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Center.Production.Migrations
 {
     [DbContext(typeof(ProductionDbContext))]
-    partial class ProductionDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190723021712_ThemTruongSlHangAnh")]
+    partial class ThemTruongSlHangAnh
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1105,13 +1107,10 @@ namespace Center.Production.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AppButDanhRef");
+                    b.Property<int>("AppHangBaiVietREF");
 
-                    b.Property<int>("AppHangREF");
-
-                    b.Property<string>("AppLoaiBaiRef");
-
-                    b.Property<int>("AppNhanSuRef");
+                    b.Property<string>("ButDanh")
+                        .HasMaxLength(50);
 
                     b.Property<string>("ChuyenMuc")
                         .HasMaxLength(100);
@@ -1144,11 +1143,17 @@ namespace Center.Production.Migrations
                     b.Property<string>("LinkClip")
                         .HasMaxLength(1000);
 
+                    b.Property<string>("LoaiBaiViet")
+                        .HasMaxLength(50);
+
                     b.Property<string>("LyDoNangHang")
                         .HasMaxLength(5000);
 
                     b.Property<string>("LyDoThuongPhat")
                         .HasMaxLength(5000);
+
+                    b.Property<string>("MaNhanSu")
+                        .HasMaxLength(10);
 
                     b.Property<string>("MaTin")
                         .HasMaxLength(100);
@@ -1178,6 +1183,9 @@ namespace Center.Production.Migrations
 
                     b.Property<string>("TenBaiViet")
                         .HasMaxLength(500);
+
+                    b.Property<string>("TenNhanSu")
+                        .HasMaxLength(100);
 
                     b.Property<decimal?>("Thuong");
 

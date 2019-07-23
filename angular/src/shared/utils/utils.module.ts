@@ -20,6 +20,7 @@ import { LocalizePipe } from '@shared/common/pipes/localize.pipe';
 import { PermissionPipe } from '@shared/common/pipes/permission.pipe';
 import { FeatureCheckerPipe } from '@shared/common/pipes/feature-checker.pipe';
 import { TrangThaiTinTucPipe } from '@shared/common/pipes/trangthaitintuc.pipe';
+import { DatePipeFormat } from '@shared/common/pipes/date.pipe';
 
 @NgModule({
     imports: [
@@ -47,7 +48,8 @@ import { TrangThaiTinTucPipe } from '@shared/common/pipes/trangthaitintuc.pipe';
         LocalizePipe,
         PermissionPipe,
         FeatureCheckerPipe,
-        TrangThaiTinTucPipe
+        TrangThaiTinTucPipe,
+        DatePipeFormat
     ],
     exports: [
         EqualValidator,
@@ -63,7 +65,8 @@ import { TrangThaiTinTucPipe } from '@shared/common/pipes/trangthaitintuc.pipe';
         LocalizePipe,
         PermissionPipe,
         FeatureCheckerPipe,
-        TrangThaiTinTucPipe
+        TrangThaiTinTucPipe,
+        DatePipeFormat
     ]
 })
 export class UtilsModule { }

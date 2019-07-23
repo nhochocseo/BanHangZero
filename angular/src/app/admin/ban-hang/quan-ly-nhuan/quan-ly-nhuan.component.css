@@ -7,11 +7,33 @@
 .m-datatable.m-datatable--default.m-datatable--loaded > .m-datatable__table > .m-datatable__head .m-datatable__row > .m-datatable__cell, .m-datatable.m-datatable--default.m-datatable--loaded > .m-datatable__table > .m-datatable__body .m-datatable__row > .m-datatable__cell, .m-datatable.m-datatable--default.m-datatable--loaded > .m-datatable__table > .m-datatable__foot .m-datatable__row > .m-datatable__cell {
     border: 1px solid #ccc;
 }
-.icon_custom {
-	width: 30px;
-    display: inline-block;
-    text-align: center;
-}
-.table-bordered th, .table-bordered td {
+.table-bordered th, .table-bordered thead td {
     border: 1px solid #e7e9ea;
+}
+.table-custom tbody tr td {
+    border-bottom: 2px solid #edf1f4;
+}
+.table-custom thead {
+    text-align: center;
+    background: #f1f5f8;
+    border-bottom: 2px solid #eaeef2;
+}
+.table-custom tbody tr:hover {
+    background-color: rgb(236, 240, 243);
+}
+.table-custom tbody {
+    color: #000;
+    font-weight: 400;
+    border-left: 2px solid #edf1f4;
+}
+.icon_custom {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 6px 6px;
+    color: #000;
+    background: #fff;
+    border: 1px solid #5a5f63;  
+}
+.icon_custom i {
+    margin-right: 5px;  
 }

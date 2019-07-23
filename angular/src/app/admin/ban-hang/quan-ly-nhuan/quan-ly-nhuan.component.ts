@@ -46,14 +46,13 @@ export class QuanLyNhuanComponent  extends AppComponentBase  implements OnInit{
     this.primengTableHelper.showLoadingIndicator();
     this._quanLyNhuanService.getQuanLyNhuan(
         this.filterText,
-        this.primengTableHelper.getSorting(this.dataTable),
+        null,
         this.primengTableHelper.getSkipCount(this.paginator, event),
         this.primengTableHelper.getMaxResultCount(this.paginator, event),
     ).pipe(finalize(() => this.primengTableHelper.hideLoadingIndicator())).subscribe(result => {
         this.primengTableHelper.totalRecordsCount = result.totalCount;
         this.primengTableHelper.records = result.items;
         this.primengTableHelper.hideLoadingIndicator();
-        console.log('đâsd');
     });
   }
 

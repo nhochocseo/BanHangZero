@@ -126,24 +126,25 @@
                     [busyIf]="primengTableHelper.isLoading">
                         <div class="scrolling" style="overflow: scroll" >
                             <!--begin: Datatable -->
-                            <table class="table table-striped- table-bordered table-hover table-checkable" style="width: max-content;display: block;" id="m_table_1"
-                            (onLazyLoad)="getDanhSach($event)">
-                                
+                            <table class="table table-striped- table-bordered table-hover table-checkable table-custom" style="width: max-content;display: block;font-family: sans-serif;" id="m_table_1">                                
                                 <thead>
                                     <tr>
-                                        <th colspan="8">THÔNG TIN CHUNG</th>
-                                        <th colspan="2">ĐÁNH GIÁ</th>
-                                        <th colspan="2">NHUẬN ẢNH</th>
-                                        <th colspan="2">NHUẬN CLIP DOWNLOAD</th>
-                                        <th rowspan="2">NHUẬN CLIP SX</th>
-                                        <th rowspan="2">NHUẬN BÀI</th>
-                                        <th rowspan="2">HỆ SỐ</th>
-                                        <th rowspan="2">THƯỞNG/PHẠT</th>
-                                        <th rowspan="2">TỔNG NHUẬN</th>
-                                        <th rowspan="2">TỔNG VIEW</th>
-                                        <th rowspan="2">TRẠNG THÁI</th>
-                                        <th rowspan="2">GHI CHÚ</th>
-                                        <th rowspan="2">HÀNH ĐỘNG</th>
+                                        <th rowspan="2">
+                                            #
+                                        </th>
+                                        <th colspan="8">Thông tin chung</th>
+                                        <th colspan="2">Đánh giá</th>
+                                        <th colspan="2">Nhuận ảnh</th>
+                                        <th colspan="2">Nhuận clip dowload</th>
+                                        <th rowspan="2" style="width: 95px;">Nhuận clip sx</th>
+                                        <th rowspan="2" style="width: 95px;">Nhuận bài</th>
+                                        <th rowspan="2" style="width: 95px;">Hệ số</th>
+                                        <th rowspan="2" style="width: 95px;">Thưởng/Phạt</th>
+                                        <th rowspan="2" style="width: 95px;">Tổng nhuận</th>
+                                        <th rowspan="2" style="width: 125px;">Tông view</th>
+                                        <th rowspan="2" style="width: 95px;">Trạng thái</th>
+                                        <th rowspan="2" style="width: 95px;">Ghi chú</th>
+                                        <th rowspan="2" style="width: 120px;">Hành động</th>
                                     </tr>
                                     <tr>
                                         <th style="width: 80px;">Mã tin</th>
@@ -164,15 +165,21 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let item of primengTableHelper.records">
+                                        <td style="width: 20px;text-align: center;">
+                                            <label class="m-checkbox m-checkbox--bold">
+                                                <input type="checkbox">
+                                                <span></span>
+                                            </label>
+                                        </td>
                                         <td>{{item.maTin}}</td>
-                                        <td>{{item.ngayLenBai}}</td>
+                                        <td>{{item.ngayLenBai | datePipeFormat }}</td>
                                         <td>
                                             {{item.chuyenMuc}}
                                         </td>
                                         <td>
-                                            <b>{{item.tenNhanSu}}</b>
+                                            <b style="color: #585858;">{{item.tenNhanSu}}</b>
                                             <br />
-                                            <span>
+                                            <span style="">
                                                 MNS: {{item.maNhanSu}} - {{item.viTri}}
                                             </span>
                                         </td>
@@ -187,6 +194,7 @@
                                             </label>
                                         </td>
                                         <td>
+                                            chưa rõ
                                                 <!-- <select class="form-control" id="m_notify_placement_from">
                                                         <option value="top">Tin thường</option>
                                                         <option value="tinhot">Tin hot</option>
@@ -197,6 +205,7 @@
                                                 {{item.tyLe}}%
                                         </td>
                                         <td>
+                                            chưa rõ
                                             <select class="form-control" id="m_notify_placement_from">
                                                 <option value="">A</option>
                                                 <option value="">B</option>
@@ -204,74 +213,99 @@
                                             </select>
                                         </td>
                                         <td id="thongtinnhuananhinput">
-                                            3
+                                            {{item.tongSoLuongAnh}}
                                         </td>
                                         <td>
-                                            450
+                                            {{item.tongTienNhuanAnh}}
                                         </td>
                                         <td  id="nhuandowloadinput">
-                                            3
+                                            chưa rõ sl nhuân clip
                                         </td>
-                                        <td>450</td>
                                         <td>
-                                            100
+                                            Chưa rõ tiền nhuận clip
                                         </td>
-                                        <td>55</td>
                                         <td>
-                                            1.2
+                                            chưa rõ nhuận clip sx
+                                        </td>
+                                        <td>
+                                            {{item.nhuanBaiViet}}
+                                          
+                                        </td>
+                                        <td>
+                                                {{item.heSo}}
                                         </td>
                                         <td id="thuongphat">
-                                            50
-                                        </td>
-                                        <td>100</td>
-                                        <td>
-                                            <div>
-                                                <span class="icon_custom"><i class="fas fa-eye"></i></span> 100.000
-                                            </div>
-                                            <div>
-                                                <span class="icon_custom"><i class="fas fa-mobile-alt"></i></span> 100.000
-                                            </div>
-                                            <div>
-                                                <span class="icon_custom"><i class="fas fa-share"></i></span> 100.000
-                                            </div>
-                                        </td>
-                                        <td><span class="m-badge m-badge--success m-badge--wide">Đã chấm</span></td>
-                                        <td>
-                                            Ghi chú
+                                            <span *ngIf="item.phat">{{item.phat}}</span>
+                                            <span *ngIf="item.thuong">{{item.thuong}}</span>
                                         </td>
                                         <td>
-                                            <label class="m-checkbox">
-                                                <input id="closeButton" type="checkbox" value="checked">
-                                                <span></span>
-                                            </label>
-                                            <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details"> <i class="la la-edit"></i> </a>
-                                            <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete"> <i class="la la-trash"></i> </a>
+                                            {{item.tongNhuan}}
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <span class="m-badge m-badge--wide m-badge--rounded icon_custom">
+                                                    <span>
+                                                        <i class="fas fa-eye"></i>
+                                                        <span>{{item.tongView}}</span>
+                                                    </span>
+                                                </span>
+                                                <span class="m-badge m-badge--wide m-badge--rounded icon_custom">
+                                                    <span>
+                                                        <i class="fas fa-desktop"></i>
+                                                        <span>{{item.viewWeb}}</span>
+                                                    </span>
+                                                </span>
+                                                <span class="m-badge m-badge--wide m-badge--rounded icon_custom">
+                                                    <span>
+                                                        <i class="fas fa-mobile-alt"></i>
+                                                        <span>{{item.viewMobile}}</span>
+                                                    </span>
+                                                </span>
+                                                <span class="m-badge m-badge--wide m-badge--rounded icon_custom">
+                                                    <span>
+                                                        <i class="fas fa-share"></i>
+                                                        <span>{{item.tongShare}}</span>
+                                                    </span>
+                                                </span>
+                                                <span class="m-badge m-badge--wide m-badge--rounded icon_custom">
+                                                    <span>
+                                                        <i class="fas fa-thumbs-up"></i>
+                                                        <span>{{item.tongLike}}</span>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            chưa rõ
+                                            <span class="m-badge m-badge--success m-badge--wide">Đã chấm</span>
+                                        </td>
+                                        <td>
+                                            {{item.ghiChu}}
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <a class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="Edit details"> <i class="la la-edit"></i> </a>
+                                            <a class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="Delete"> <i class="la la-trash"></i> </a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </div>                        
                         
-                        <div class="m-datatable__pager m-datatable--paging-loaded clearfix">
-                            <ul class="m-datatable__pager-nav">
-                                <li><a title="First" class="m-datatable__pager-link m-datatable__pager-link--first m-datatable__pager-link--disabled" data-page="1" disabled="disabled"><i class="la la-angle-double-left"></i></a></li>
-                                <li><a title="Previous" class="m-datatable__pager-link m-datatable__pager-link--prev m-datatable__pager-link--disabled" data-page="1" disabled="disabled"><i class="la la-angle-left"></i></a></li>
-                                <li style="display: none;"><a title="More pages" class="m-datatable__pager-link m-datatable__pager-link--more-prev" data-page="1"><i class="la la-ellipsis-h"></i></a></li>
-                                <li style="display: none;"><input type="text" class="m-pager-input form-control" title="Page number"></li>
-                                <li><a class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--active" data-page="1" title="1">1</a></li>
-                                <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="2" title="2">2</a></li>
-                                <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="3" title="3">3</a></li>
-                                <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="4" title="4">4</a></li>
-                                <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="5" title="5">5</a></li>
-                                <li><a class="m-datatable__pager-link m-datatable__pager-link-number" data-page="6" title="6">6</a></li>
-                                <li><a title="More pages" class="m-datatable__pager-link m-datatable__pager-link--more-next" data-page="7"><i class="la la-ellipsis-h"></i></a></li>
-                                <li><a title="Next" class="m-datatable__pager-link m-datatable__pager-link--next" data-page="2"><i class="la la-angle-right"></i></a></li>
-                                <li><a title="Last" class="m-datatable__pager-link m-datatable__pager-link--last" data-page="35"><i class="la la-angle-double-right"></i></a></li>
-                            </ul>
-                            <div class="m-datatable__pager-info">
-                                <span class="m-datatable__pager-detail">Displaying 1 - 10 of 350 records</span>
+                        <div class="primeng-no-data" *ngIf="primengTableHelper.totalRecordsCount == 0">
+                                {{'NoData' | localize}}
                             </div>
-                        </div>
+                            <div class="primeng-paging-container">
+                                <p-paginator [rows]="primengTableHelper.defaultRecordsCountPerPage"
+                                                #paginator
+                                                (onPageChange)="getDanhSachChangePage($event)"
+                                                [totalRecords]="primengTableHelper.totalRecordsCount"
+                                                [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage">
+
+                                </p-paginator>
+                                <span class="total-records-count">
+                                    {{'TotalRecordsCount' | localize:primengTableHelper.totalRecordsCount}}
+                                </span>
+                            </div>
                     </div>
                   <!--<Primeng-TurboTable-End>-->
           </div>
