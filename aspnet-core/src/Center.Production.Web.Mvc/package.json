@@ -59,7 +59,7 @@
     "jstree": "^3.3.7",
     "localforage": "^1.7.3",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.23",
     "morris.js": "^0.5.0",
     "mustache": "^3.0.1",
